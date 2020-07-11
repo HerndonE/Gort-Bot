@@ -1,0 +1,52 @@
+/*********************/
+6.4.2020
+Update 1:
+	Gort bot version 1.0.0 is live!
+
+Here are the commands
+1. .ping response - pong!
+2. .info version  response Version 1.0.0
+3. hello or Hello response  Hello Friend!
+4. .weather 'Insert City Here' response City weather at this instance
+
+Bug: Mr. Oran Collins broke the bot with special characters. 
+Will have to fix this so it doesn't have to break and restart everytime.
+
+/*********************/
+6.5.2020
+Update 2:
+    Gort bot version 1.0.1 is live!
+    
+Updated commands
+3. hello or Hello or Hello response  Hello Friend!
+4. .weather 'Insert City/Zip Code Here' response City weather at this instance
+
+Weather message has been updated to embedded message instead of sending
+3 messages for the weather at a time.
+
+/*********************/
+6.17.2020
+Update 3:
+    Gort bot version 1.0.2 is live!
+    
+Sanitized input from Mr. Oran Collins.
+Implementation of Database with help from Danny Jacoby
+
+Updated commands
+5. .serverinfo response get server information
+6. .userinfo response get user information
+7. .image " " ex: .image alien response image
+8. .chucknorris get Chuck Norris Jokes
+9. .bz2 info get Battlezone II information
+10. .fnf about Five Night's at Freddy's
+
+/*********************/
+6.26.2020
+Update 4:
+    Gort bot version 1.0.3 is live!
+    General code clean up, seperate files 
+    for commands.
+
+New command
+11. .rnm about response Rick and Morty
+
