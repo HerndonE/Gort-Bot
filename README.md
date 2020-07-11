@@ -1,39 +1,5 @@
 # Gort Bot for Discord!
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-* {
-  box-sizing: border-box;
-}
 
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 2px;
-}
-
-/* Clearfix (clear floats) */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-</style>
-</head>
-<body>
-
-<div class="row">
-  <div class="column">
-    <img src="https://discord.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png" alt="Discord" style="width:90%">
-  </div>
-  <div class="column">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_k76-s3pPH7ORxG6lI4c6c0fVskmLICRX0zNLJ4Ouns_eEeJnlc88I4Aok2BXJM-x_nVZaedZ&usqp=CAc" alt="Gort" style="width:40%">
-  </div>
-</div>
-
-</body>
-</html>
 ----
 ## What is Gort Bot?
 Gort Bot is a multi-purpose discord bot focusing on enhancing the discord expierence.You will find a bug-free and easy-to-use experience.     
@@ -84,41 +50,5 @@ Ethan Herndon; 2020 - All rights reserved.
 
 ---
 ## Contributors
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-* {
-  box-sizing: border-box;
-}
-
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 2px;
-}
-
-/* Clearfix (clear floats) */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-</style>
-</head>
-<body>
-
-<div class="row">
-  <div class="column">
-    <img src="https://avatars2.githubusercontent.com/u/60196483?s=460&u=b1f439d373b2b4a0d0d12eadbfc22972a217ea15&v=4" alt="DannyJ" style="width:50%">
- <a href="https://github.com/DannyJacoby"><sub><br><b>Danny Jacoby</b></sub></a><br></th><br>
-  </div>
-  <div class="column">
-    <img src="https://avatars2.githubusercontent.com/u/29699356?s=460&u=4ac91a851231997782c9e0d378875e92b1db9541&v=4" alt="OranC" style="width:50%">
-   <a href="https://github.com/wisehackermonkey"><sub><br><b>Oran Collins</b></sub></a><br></th><br>
-  </div>
-</div>
-
-</body>
-</html>
-
+1. [Danny Jacoby](https://github.com/DannyJacoby)
+2. [Oran Collins](https://github.com/wisehackermonkey)
