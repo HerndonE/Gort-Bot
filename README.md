@@ -1,4 +1,13 @@
-# Gort Bot for Discord!
+# Gort Bot for Discord!    
+
+![Discord](https://img.shields.io/discord/731313281893138453.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)
+
+
+![](https://img.shields.io/github/last-commit/HerndonE/Gort-Bot?style=plastic) 
+![](https://img.shields.io/github/languages/top/HerndonE/Gort-Bot) 
+![](https://img.shields.io/github/repo-size/HerndonE/Gort-Bot)
+
+![](https://img.shields.io/github/forks/HerndonE/Gort-Bot?style=social) ![](https://img.shields.io/github/stars/HerndonE/Gort-Bot?style=social) ![](https://img.shields.io/github/watchers/HerndonE/Gort-Bot?style=social)
 
 ----
 ## What is Gort Bot?
