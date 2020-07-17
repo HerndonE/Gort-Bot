@@ -28,17 +28,16 @@ Daily Bug Fixes, Updates and new features
     
 1. **.ping** response - **pong!**
 2. **.info version**  response **Version #**
-3. ~~ **hello** or **Hello** or **HELLO** response  **Hello Friend!** ~~
-4. **.weather 'Insert City Here/Zip Code Here'** response **City weather at this instance**
-5. **.serverinfo** response get server information
-6. **.userinfo** response get user information
-7. **.image " "** ex: _.image alien_ response image
-8. **.chucknorris** get Chuck Norris Jokes
-9. **.bz2 info** get Battlezone II information
-10. **.fnf about** get Five Night's at Freddy's information
-11. **.rnm about** response Rick and Morty
-12. **.covid about** response live Covid-19 cases
-13. **.movie " "** ex: _.movie star wars_ response all star wars movies    
+3. **.weather 'Insert City Here/Zip Code Here'** response **City weather at this instance**
+4. **.serverinfo** response get server information
+5. **.userinfo** response get user information
+6. **.image " "** ex: _.image alien_ response image
+7. **.chucknorris** get Chuck Norris Jokes
+8. **.bz2 info** get Battlezone II information
+9. **.fnf about** get Five Night's at Freddy's information
+10. **.rnm about** response Rick and Morty
+11. **.covid about** response live Covid-19 cases
+12. **.movie " "** ex: _.movie star wars_ response all star wars movies    
 
 
 ----
