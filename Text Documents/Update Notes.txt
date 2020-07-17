@@ -50,3 +50,21 @@ Update 4:
 New command
 11. .rnm about response Rick and Morty
 
+/*********************/
+7.5.2020
+Update 5:
+    Gort bot version 1.0.4 is live!
+    General code clean up
+    
+New command
+12. .covid about response live Covid-19 cases
+
+/*********************/
+7.17.2020
+Update 6:
+    Gort bot version 1.0.5 is live!
+    Removed "Hello" command, .ping should be suffice for quick bot check.
+    Added movie search!
+    
+New command
+13. .movie " " ex: .movie star wars response all star wars movies

@@ -15,13 +15,14 @@ const token = 'YOURTOKENHERE';
 exports.token = token;
 const PREFIX = '.';
 const imagePREFIX = '.';
-var version = '1.0.4'
+var version = '1.0.5'
 var imagemessage;
 
 Weather = require("./weather");
 ChuckNorris = require("./chucknorris");
 RickandMorty = require("./rickandmorty");
 CovidTracker = require("./covidtracker");
+Movie = require("./movie");
 
 bot.on('message', imagemessage => {
 
@@ -348,9 +349,6 @@ bot.on('ready', () => {
 
 bot.on('message', msg => {
 
-    if ((msg.content === "HELLO") || (msg.content === "hello") || (msg.content === "Hello")) {
-        msg.reply(" Hello Friend!");
-    }
 
     if ((msg.content === "Good Morning") || (msg.content === "gm") || (msg.content === "morning") ||
         (msg.content === "good morning")) {

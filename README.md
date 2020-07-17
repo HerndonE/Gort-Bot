@@ -28,7 +28,7 @@ Daily Bug Fixes, Updates and new features
     
 1. **.ping** response - **pong!**
 2. **.info version**  response **Version #**
-3. **hello** or **Hello** or **HELLO** response  **Hello Friend!**
+3. ~~ **hello** or **Hello** or **HELLO** response  **Hello Friend!** ~~
 4. **.weather 'Insert City Here/Zip Code Here'** response **City weather at this instance**
 5. **.serverinfo** response get server information
 6. **.userinfo** response get user information
@@ -38,6 +38,7 @@ Daily Bug Fixes, Updates and new features
 10. **.fnf about** get Five Night's at Freddy's information
 11. **.rnm about** response Rick and Morty
 12. **.covid about** response live Covid-19 cases
+13. **.movie " "** ex: _.movie star wars_ response all star wars movies    
 
 
 ----
@@ -47,7 +48,8 @@ Daily Bug Fixes, Updates and new features
 * api.icndb.com
 * api.thevirustracker.com
 * covidtracking.com
-* pixabay.com
+* pixabay.com    
+* omdbapi.com     
 
 ----
 ## Issues
