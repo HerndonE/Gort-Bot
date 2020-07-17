@@ -96,8 +96,8 @@ const cmdEmbed = {
             inline: true,
         },
         {
-            name: '**3. Hi to Gort!**',
-            value: '_hello_',
+            name: '**3. Movie**',
+			value: '_.weather " "_',
             inline: true,
         },
         {
