@@ -97,7 +97,7 @@ const cmdEmbed = {
         },
         {
             name: '**3. Movie**',
-			value: '_.weather " "_',
+			value: '_.movie " "_',
             inline: true,
         },
         {
