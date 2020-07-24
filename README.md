@@ -11,7 +11,7 @@
 
 ----
 ## What is Gort Bot?
-Gort Bot is a multi-purpose discord bot focusing on enhancing the discord expierence.You will find a bug-free and easy-to-use experience.     
+Gort Bot is a multi-purpose discord bot focusing on enhancing the discord expierence. You will find a bug-free and easy-to-use experience.     
 
 1. [Invite](https://discord.com/oauth2/authorize?client_id=723709096175468636&scope=bot)   
 2. [Gort Test Server](https://discord.gg/w3Mc4fm)
