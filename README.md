@@ -42,12 +42,12 @@ Daily Bug Fixes, Updates and new features
 
 ----
 ## APIs Used    
-			 |
------------- | -------------
-penweathermap.org 1 | covidtracking.com 2
-rickandmortyapi.com 1 | pixabay.com  2 
-api.icndb.com 1 | omdbapi.com  2   
-api.thevirustracker.com 1 |       
+```
+openweathermap.org      covidtracking.com
+rickandmortyapi.com     pixabay.com            
+api.icndb.com           omdbapi.com     
+api.thevirustracker.com 
+```    
    
 
 ----
