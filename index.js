@@ -250,6 +250,11 @@ bot.on('message', async msg => {
                 embed: cmdEmbed
             });
             break;
+		 case 'cmds':
+            msg.channel.send({ 
+				embed: cmdEmbed 
+			});
+            break;
         case 'info':
             if (args[1] === 'version') {
                 msg.channel.send('Version ' + version)
@@ -340,7 +345,7 @@ bot.on('guildMemberAdd', member => {
 
 bot.on('ready', () => {
     console.log('This bot is online');
-
+	bot.user.setActivity("on Heroku.com | .cmds"); 
 
 })
 
