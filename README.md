@@ -38,6 +38,16 @@ Daily Bug Fixes, Updates and new features
 10. **.rnm about** response Rick and Morty
 11. **.covid about** response live Covid-19 cases
 12. **.movie " "** ex: _.movie star wars_ response all star wars movies    
+13. **.ps2 about** get Planetside 2 info    
+
+---
+## Configuration    
+
+1. Gort will alert the server whenever someone is streaming!    
+	1. Create a channel called 'streaming'.    
+	2. Go live with whatever streaming service you are on.     
+	3. Gort will tell users who is live.     
+		However it MAY occasionally spam so fix coming soon.    
 
 
 ----
