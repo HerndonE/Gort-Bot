@@ -68,3 +68,17 @@ Update 6:
     
 New command
 13. .movie " " ex: .movie star wars response all star wars movies
+
+/*********************/
+8.18.2020
+Update 7:
+    Gort bot version 1.0.6 is live!
+    Leave your shoes* at the door.
+    Added planetside 2 feature
+    Gort will alert the server whenever someone is streaming!
+        create a channel called #streaming. Go live with whatever
+        streaming service you are on. Gort will tell users who is live.
+        However it MAY occasionally spam.
+    
+New command
+14. .ps2 about

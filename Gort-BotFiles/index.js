@@ -15,7 +15,7 @@ const token = 'YOURTOKENHERE';
 exports.token = token;
 const PREFIX = '.';
 const imagePREFIX = '.';
-var version = '1.0.5'
+var version = '1.0.6'
 var imagemessage;
 
 Weather = require("./weather");
@@ -23,6 +23,7 @@ ChuckNorris = require("./chucknorris");
 RickandMorty = require("./rickandmorty");
 CovidTracker = require("./covidtracker");
 Movie = require("./movie");
+PlanetSide2 = require("./planetside2");
 
 bot.on('message', imagemessage => {
 
@@ -324,7 +325,7 @@ bot.on('guildMemberAdd', member => {
             greeting = "Challenger approaching - " + member.user.username + " has appeared";
             break;
         case 2:
-            greeting = "Welcome " + member.user.username + ". Leave your weapon by the door.";
+            greeting = "Welcome " + member.user.username + ". Leave your shoes by the door.";
             break;
         case 3:
             greeting = "Hello " + member.user.username + ". Its good to see you!";
@@ -341,6 +342,24 @@ bot.on('guildMemberAdd', member => {
 
     member.guild.channels.cache.find(channel => channel.name === 'general').send(greeting);
 
+});
+
+
+bot.on("presenceUpdate", (oldPresence, newPresence) => {
+    //let channel = newPresence.guild.channels.cache.get(c => c.name === 'streaming')
+    
+    if (!newPresence.activities) return false;
+    newPresence.activities.forEach(activity => {
+    //console.log(`${newPresence.user.tag} user is now ${newPresence.status} in guild ${newPresence.guild.name}`);
+        if (activity.type == "STREAMING") {
+            console.log(`${newPresence.user.tag} is streaming at ${activity.url}.`);
+             let guildChannels = newPresence.guild.channels;
+            const ticketChannel = guildChannels.guild.channels.cache.find(channel => channel.name === 'streaming') 
+            ticketChannel.send(`${newPresence.user.tag} is streaming at ${activity.url}.`)
+
+        };
+    });
+    
 });
 
 bot.on('ready', () => {
