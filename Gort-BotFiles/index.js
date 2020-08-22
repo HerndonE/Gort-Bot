@@ -141,6 +141,16 @@ const cmdEmbed = {
             value: '_.rnm about_',
             inline: true,
         },
+		{
+			    name: "**12. Covid Tracker**",
+			    value: '_.covid about_',
+			    inline: true,
+		        },
+		         {
+			    name: "**13. PlanetSide 2**",
+			    value: '_.ps2 about_',
+			    inline: true,
+		        },
     ],
     timestamp: new Date(),
     footer: {
