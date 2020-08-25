@@ -27,7 +27,7 @@ Daily Bug Fixes, Updates and new features
 ## Commands
     
 1. **.ping** response - **pong!**
-2. **.info version**  response **Version #**
+2. **.info**  response **info about Gort**
 3. **.weather 'Insert City Here/Zip Code Here'** response **City weather at this instance**
 4. **.serverinfo** response get server information
 5. **.userinfo** response get user information

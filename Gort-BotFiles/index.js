@@ -92,8 +92,8 @@ const cmdEmbed = {
             inline: true,
         },
         {
-            name: '**2. Version #**',
-            value: '_.info version #_',
+            name: '**2. Info**',
+            value: '_.info_',
             inline: true,
         },
         {
@@ -154,7 +154,7 @@ const cmdEmbed = {
     ],
     timestamp: new Date(),
     footer: {
-        text: 'Created by F9bomber',
+        text: 'Bot created by F9bomber.',
     },
 };
 
@@ -267,11 +267,21 @@ bot.on('message', async msg => {
 			});
             break;
         case 'info':
-            if (args[1] === 'version') {
-                msg.channel.send('Version ' + version)
-            } else {
-                msg.channel.send('come again?!')
-            }
+            msg.channel.send({
+            embed: new Discord.MessageEmbed()
+            .setTitle("Gort Bot Information")
+            .setColor("0x999999")
+            .setDescription(`**Version:** ${version} 
+            
+            **Invite Gort** [here](https://discord.com/oauth2/authorize?client_id=723709096175468636&scope=bot)
+            
+            🤖 Gort Bot can be found in **${bot.guilds.cache.size}** servers
+            
+            **Why was I created?**
+                I was created as a multi-purpose discord bot focusing on enhancing your expierence.`
+            )
+            .setTimestamp()
+            });
             break;
         case 'userinfo':
             let userEmbed = new Discord.MessageEmbed()
@@ -286,7 +296,7 @@ bot.on('message', async msg => {
                 .addField("Status:", `${msg.author.presence.status}`, true)
                 .addField("Created At:", `${msg.author.createdAt}`, true)
                 .addField("Joined At:", msg.member.joinedAt, true)
-                .setFooter("by Gort Bot: ", 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_k76-s3pPH7ORxG6lI4c6c0fVskmLICRX0zNLJ4Ouns_eEeJnlc88I4Aok2BXJM-x_nVZaedZ&usqp=CAc');
+                .setFooter("by Gort Bot.", 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_k76-s3pPH7ORxG6lI4c6c0fVskmLICRX0zNLJ4Ouns_eEeJnlc88I4Aok2BXJM-x_nVZaedZ&usqp=CAc');
             msg.channel.send({
                 embed: userEmbed
             });
@@ -309,7 +319,7 @@ bot.on('message', async msg => {
                 .addField("**Text Channels:**", `${msg.guild.channels.cache.filter(channel => channel.type === 'text').size}`, true)
                 .addField("**Voice Channels:**", `${msg.guild.channels.cache.filter(channel => channel.type === 'voice').size}`, true)
                 .addField("**Server Create Date:**", msg.guild.createdAt, true)
-                .setFooter("by Gort Bot: ", 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_k76-s3pPH7ORxG6lI4c6c0fVskmLICRX0zNLJ4Ouns_eEeJnlc88I4Aok2BXJM-x_nVZaedZ&usqp=CAc');
+                .setFooter("by Gort Bot.", 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_k76-s3pPH7ORxG6lI4c6c0fVskmLICRX0zNLJ4Ouns_eEeJnlc88I4Aok2BXJM-x_nVZaedZ&usqp=CAc');
             msg.channel.send({
                 embed: serverEmbed
             });
@@ -375,6 +385,7 @@ bot.on("presenceUpdate", (oldPresence, newPresence) => {
 bot.on('ready', () => {
     console.log('This bot is online');
 	bot.user.setActivity("on Heroku.com | .cmds"); 
+	console.log(bot.guilds.cache.size);
 
 })
 

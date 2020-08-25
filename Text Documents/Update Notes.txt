@@ -82,3 +82,8 @@ Update 7:
     
 New command
 14. .ps2 about
+
+/*********************/
+8.25.2020
+Update 8:
+	Footer clean up and info modification
