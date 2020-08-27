@@ -273,12 +273,21 @@ bot.on('message', async msg => {
             .setColor("0x999999")
             .setDescription(`**Version:** ${version} 
             
-            **Invite Gort** [here](https://discord.com/oauth2/authorize?client_id=723709096175468636&scope=bot)
+**Invite Gort** [here](https://discord.com/oauth2/authorize?client_id=723709096175468636&scope=bot)
             
-            🤖 Gort Bot can be found in **${bot.guilds.cache.size}** servers
+🤖 Gort Bot can be found in **${bot.guilds.cache.size}** servers
             
-            **Why was I created?**
-                I was created as a multi-purpose discord bot focusing on enhancing your expierence.`
+**Why was I created?**
+    I was created as a multi-purpose discord bot focusing on enhancing your expierence.
+              
+I am following Isaac Asimovs "Three Laws of Robotics"
+    **First Law**
+    A robot may not injure a human being or, through inaction, allow a human being to come to harm.
+   **Second Law**
+    A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.
+    **Third Law**
+    A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.
+              `
             )
             .setTimestamp()
             });
