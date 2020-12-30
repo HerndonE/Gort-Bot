@@ -3,48 +3,55 @@ const bot = new Discord.Client();
 const request = require('request');
 const filestream = require('fs');
 // used for stripping bad text out of user input
-const Sanitize = require("./sanitize");
+const Sanitize = require("../sanitize");
+var Index = require('../index');
+var token = Index.token;
 const weatherPREFIX = '.';
 var weathermessage;
-var Index = require('./index');
-var token = Index.token;
 var openweathermapMessage = "Brought to you by openweathermap.org";
+
 bot.on('message', weathermessage => {
-
-
+    // let args =      weathermessage.content.substring(weatherPREFIX.length).split(" ");
+  
     let raw_userinput = weathermessage.content.substring(weatherPREFIX.length)
     let safe_userinput = Sanitize.text(raw_userinput)
     let args = safe_userinput.split(" ");
-
+    
     switch (args[0]) {
         case 'weather':
             var check = (args[1]);
-
-            if (typeof check === 'undefined') {
-
+            //var check3 = (args[1]);
+            if (typeof check === 'undefined')
+            {
+                //console.log("User didn't enter anything");
                 return weathermessage.reply('Error! Please enter City or Zip Code')
-
+                
             }
             var c2 = check.concat(' ', args[2]);
-
-
+            //check3.trim();
+            
             if ((c2 != null)) {
-
+                //console.log(c2);
+                //console.log(check3);
                 if (c2.indexOf("undefined") || !c2.indexOf("undefined")) {
                     c2 = c2.replace(' undefined', '');
-
-                    var apiKey = 'YOURAPIKEY';
+                    //console.log(c2);
+                    //test = true;
+                    //console.log(true);
+                    
+                    var apiKey = 'APIKEY';
                     let city = c2;
                     var url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`
-
+                    
                 }
-
-                if (!isNaN(c2)) {
+                
+                if (!isNaN(c2)) 
+                {
                     let zip = c2;
                     url = `http://api.openweathermap.org/data/2.5/weather?q=${zip},us&appid=${apiKey}&units=imperial`
                 }
 
-
+                //weathermessage.channel.send('You just typed: ' + args[1])
 
                 request(url, function(err, response, body) {
                     if (err) {
@@ -74,26 +81,26 @@ bot.on('message', weathermessage => {
 **🌇:** ${newSunset.toLocaleString()} UTC/GMT.
                    `;
                     //weathermessage.channel.send(message)
-                    var weatherIcon = "http://openweathermap.org/img/wn/" + weather.weather[0].icon + "@2x.png";
-                    weathermessage.channel.send({
-                        embed: {
-
-                            color: 0x999999,
-                            title: 'Current Weather Report \n ~ Gort Bot',
-                            thumbnail: {
-                                url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_k76-s3pPH7ORxG6lI4c6c0fVskmLICRX0zNLJ4Ouns_eEeJnlc88I4Aok2BXJM-x_nVZaedZ&usqp=CAc',
-                            },
-                            description: message,
-                            image: {
-                                url: weatherIcon
-                            },
-                            footer: {
-                                text: openweathermapMessage,
-                            },
-                        }
-                    });
+ var weatherIcon = "http://openweathermap.org/img/wn/" + weather.weather[0].icon +"@2x.png";
+ weathermessage.channel.send({
+                            embed: {
+                                  
+                                color: 0x999999,
+	                            title: 'Current Weather Report \n ~ Gort Bot',
+	                            thumbnail: {
+		                        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_k76-s3pPH7ORxG6lI4c6c0fVskmLICRX0zNLJ4Ouns_eEeJnlc88I4Aok2BXJM-x_nVZaedZ&usqp=CAc',
+	                            },
+                                description: message,
+                                image: {
+                                    url: weatherIcon
+                                },
+                                footer: {
+		                            text: openweathermapMessage,
+	                                },
+                            }
+                        });
                     console.log(message);
-
+                    //weathermessage.channel.send("Brought to you by " + "openweathermap.org");
                 });
 
             } else {
@@ -107,5 +114,6 @@ bot.on('ready', () => {
     console.log('Weather Function is Ready Commander');
 })
 
-//bot.login(token);//For Local Testing
-bot.login(process.env.token); //For Online Deploy
+
+bot.login(token);//For Local Testing
+//bot.login(process.env.token); //For Online Deploy

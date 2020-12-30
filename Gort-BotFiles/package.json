@@ -12,7 +12,10 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "discord-canvas": "^1.2.0",
+    "discord-paginationembed": "^2.1.0",
     "discord.js": "^12.2.0",
+    "discord.js-collector": "^1.8.5",
+    "discord.js-pagination": "^1.0.3",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "request": "^2.88.2"

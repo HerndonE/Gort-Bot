@@ -19,6 +19,7 @@ Gort Bot is a multi-purpose discord bot focusing on enhancing the discord expier
 ----
 ## Features
 Guild Configuration   
+Pagination    
 Over 15+ Commands  
 Daily Bug Fixes, Updates and new features
 

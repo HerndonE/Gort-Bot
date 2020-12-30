@@ -84,6 +84,16 @@ New command
 14. .ps2 about
 
 /*********************/
-8.25.2020
+12.29.2020
 Update 8:
-	Footer clean up and info modification
+    Gort bot version 1.0.7 is live!
+    Implemented pagination.
+        1. Command listing restructured w/reactions
+        2. Scroll through movies using reactions
+    Files that use API's are in services folder.
+    Image search is its own JS file. FINALLY
+    
+    Future TODOS:
+    1. Lookup 2 new apis for Covid.
+    2. Optimize loading time.
+    3. Optimize movie pagination.
