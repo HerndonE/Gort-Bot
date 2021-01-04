@@ -97,3 +97,8 @@ Update 8:
     1. Lookup 2 new apis for Covid.
     2. Optimize loading time.
     3. Optimize movie pagination.
+    
+/*********************/
+1.4.2021
+Update 9:
+    Fixed 1 Covid API ie country search
