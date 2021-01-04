@@ -57,7 +57,7 @@ Daily Bug Fixes, Updates and new features
 openweathermap.org      covidtracking.com
 rickandmortyapi.com     pixabay.com            
 api.icndb.com           omdbapi.com     
-api.thevirustracker.com 
+corona-api.com   
 ```    
    
 
