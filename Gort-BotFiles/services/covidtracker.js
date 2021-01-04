@@ -34,7 +34,7 @@ bot.on('message', covidmessage => {
 
                         text = isocountries[text];
                     }
-
+   
                     console.log("1:" + text);
                     /* Old API
                     var url = "https://api.thevirustracker.com/free-api?countryTotal="+ text;
@@ -48,11 +48,14 @@ bot.on('message', covidmessage => {
                         }
                         let parsedData = JSON.parse(body)
 
-                        if (parsedData["results"]) {
-                            covidmessage.channel.send("You may have mistyped something.")
+                        /* Old API Case
+                        parsedData["results"]
+                        */
+                        if (parsedData["message"]) {
+                            covidmessage.channel.send(parsedData["message"])
                             return;
                         }
-
+                        
                         covidmessage.channel.send({
                             embed: new Discord.MessageEmbed()
                                 .setTitle("Covid-19 Country Search!")
