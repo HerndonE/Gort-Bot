@@ -35,11 +35,10 @@ Daily Bug Fixes, Updates and new features
 6. **.image " "** ex: _.image alien_ response image
 7. **.chucknorris** get Chuck Norris Jokes
 8. **.bz2 info** get Battlezone II information
-9. **.fnf about** get Five Night's at Freddy's information
-10. **.rnm about** response Rick and Morty
-11. **.covid about** response live Covid-19 cases
-12. **.movie " "** ex: _.movie star wars_ response all star wars movies    
-13. **.ps2 about** get Planetside 2 info    
+9. **.rnm about** response Rick and Morty
+10. **.covid about** response live Covid-19 cases
+11. **.movie " "** ex: _.movie star wars_ response all star wars movies    
+12. **.ps2 about** get Planetside 2 info    
 
 ---
 ## Configuration    

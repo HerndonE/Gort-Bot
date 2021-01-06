@@ -101,11 +101,11 @@ const cmdGames = {
             value: '_.ps2 about_',
             inline: true,
         },
-        {
+        /*{
             name: "**3. Five Night's at Freddy's**",
             value: '_.fnf about_',
             inline: true,
-        },
+        },*/
     ],
 };
 
@@ -136,9 +136,13 @@ const cmdAcc = {
             value: '_.rnm about_',
             inline: true,
         },
+        {
+            name: "**5. Animal Search**",
+            value: '_.animals_',
+            inline: true,
+        },
     ],
 };
-
 
 /*
 Animals List
@@ -160,9 +164,8 @@ const cmdAni = {
     ],
 };
 
-
 function bz2InfoGrab(name, callback) {
-    let stmt = 'SELECT * FROM bz2 WHERE name=?';
+    let stmt = 'SELECT * FROM bz2 WHERE name=?'; //column name
     var con = herokuConnection();
 
     con.query(stmt, [name], function(error, results) {
@@ -194,7 +197,7 @@ function bz2Dump(name) {
     });
 }
 
-function fnfDump(name) {
+/*function fnfDump(name) {
     let stmt = 'SELECT * FROM fnf WHERE name=?';
     var con = herokuConnection();
     return new Promise(function(resolve, reject) {
@@ -206,7 +209,7 @@ function fnfDump(name) {
         });
     });
 }
-
+*/
 bot.on('message', async msg => {
     // let args = msg.content.substring(PREFIX.length).split(" ");
 
@@ -246,7 +249,7 @@ bot.on('message', async msg => {
             paginate(msg, pages, emojis, 60000)
             break;
 
-        case 'fnf':
+/*        case 'fnf':
             let fnfInfo = await fnfDump(args[1]);
             console.log(fnfInfo);
             var fnf = fnfInfo.length > 0 ? fnfInfo[0] : "DNE";
@@ -267,7 +270,7 @@ bot.on('message', async msg => {
 
             }
             //console.log("Info: " + fnf.info + '\n' + fnf.quote);
-            break;
+            break;*/
         case 'bz2':
             let bz2Info = await bz2Dump(args[1]);
             console.log(bz2Info);
@@ -275,32 +278,16 @@ bot.on('message', async msg => {
             if (bz2 === "DNE") {
                 msg.channel.send("What are you doing?!")
             } else {
-                //msg.channel.send(bz2.info)
-                //msg.channel.send(bz2.picture)
                 msg.channel.send({
                     embed: new Discord.MessageEmbed()
                         .setTitle("Battlezone 2 Unit Stats")
-                        .setImage(bz2.picture)
+                        .setImage(bz2.picture) //column name
                         .setColor("0x999999")
-                        .setDescription(bz2.info)
+                        .setDescription(bz2.info) //column name
                         .setTimestamp()
                         .setFooter('Battlezone II: Combat Commander')
                 });
             }
-            //console.log("Info: " + bz2.info);
-            //msg.channel.send(bz2.info)
-            /*
-            bz2InfoGrab(args[2], function(result){
-            bz2Info = result.length > 0 ? result[0]: "DNE";
-            console.log(bz2Info);
-            if(bz2Info != "DNE"){
-                 let bzchannel = JSON.parse(bz2Info.name)
-                msg.channel.send(bzchannel)
-            }
-            
-            });
-            */
-            // }
             break;
         case 'ping':
             msg.channel.send('pong!')
@@ -383,7 +370,7 @@ I am following Isaac Asimovs "Three Laws of Robotics"
             //to get role count to work properly. I modified the role count code from
             //https://github.com/MenuDocs/Discord.js-v12-Tutorials/blob/Episode-4/src/Commands/Utilities/Serverinfo.js
             break;
-		case 'animals':
+        case 'animals':
             msg.channel.send({
                 embed: cmdAni
             });

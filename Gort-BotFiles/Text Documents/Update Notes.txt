@@ -102,3 +102,15 @@ Update 8:
 1.4.2021
 Update 9:
     Fixed 1 Covid API ie country search
+    
+/*********************/
+1.5.2021
+Update 10:
+    Gort bot version 1.0.8 is live!
+    Added Animal Search.
+    New Commands
+        1. .animals
+            1. .cat
+            2. .dog
+    Fixed database
+    Removed fnaf table
