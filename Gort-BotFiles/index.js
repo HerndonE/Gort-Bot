@@ -4,7 +4,7 @@ Made by: Ethan Herndon
 Desc: A bot made using fun applications while using Discord. A desired project that is
 now coming to life!
 github.com/HerndonE
-Gort Bot Version: 1.0.7
+Gort Bot Version: 1.0.8
 */
 const Discord = require('discord.js');
 const bot = new Discord.Client();
