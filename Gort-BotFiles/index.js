@@ -25,6 +25,7 @@ CovidTracker = require("./services/covidtracker");
 Movie = require("./services/movie");
 PlanetSide2 = require("./services/planetside2");
 Images = require("./services/imagesearch");
+Animals = require("./services/animals");
 /*******Messages*******/
 Messages = require("./messages/messages");
 Navigation = require("./messages/navigation");

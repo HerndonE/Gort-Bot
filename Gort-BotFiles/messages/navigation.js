@@ -7,7 +7,7 @@ const filestream = require('fs');
 // used for stripping bad text out of user input
 const Sanitize = require("../sanitize");
 const PREFIX = '.';
-var version = '1.0.7'
+var version = '1.0.8'
 const paginate = require('discord.js-pagination');
 /*
 Command List
@@ -140,15 +140,26 @@ const cmdAcc = {
 };
 
 
-function herokuConnection() {
-    let con = mysql.createConnection({
-        host: 'un0jueuv2mam78uv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-        user: 'wwqec2ti0lx72q19',
-        password: 'rqwc23a7vbg9ygb4',
-        database: 'ebf3bkpbzisu9g7b',
-    });
-    return con;
-}
+/*
+Animals List
+*/
+
+const cmdAni = {
+    color: 0x999999,
+    title: 'Animals List',
+    fields: [{
+            name: '**1. Cat Search**',
+            value: '_.cat_',
+            inline: true,
+        },
+        {
+            name: '**2. Dog Search**',
+            value: '_.dog_',
+            inline: true,
+        },
+    ],
+};
+
 
 function bz2InfoGrab(name, callback) {
     let stmt = 'SELECT * FROM bz2 WHERE name=?';
@@ -371,6 +382,11 @@ I am following Isaac Asimovs "Three Laws of Robotics"
             });
             //to get role count to work properly. I modified the role count code from
             //https://github.com/MenuDocs/Discord.js-v12-Tutorials/blob/Episode-4/src/Commands/Utilities/Serverinfo.js
+            break;
+		case 'animals':
+            msg.channel.send({
+                embed: cmdAni
+            });
             break;
         case 'clear':
             if (!args[1]) return msg.reply('Error! add another argument')
