@@ -27,18 +27,7 @@ Daily Bug Fixes, Updates and new features
 ---
 ## Commands
     
-1. **.ping** response - **pong!**
-2. **.info**  response **info about Gort**
-3. **.weather 'Insert City Here/Zip Code Here'** response **City weather at this instance**
-4. **.serverinfo** response get server information
-5. **.userinfo** response get user information
-6. **.image " "** ex: _.image alien_ response image
-7. **.chucknorris** get Chuck Norris Jokes
-8. **.bz2 info** get Battlezone II information
-9. **.rnm about** response Rick and Morty
-10. **.covid about** response live Covid-19 cases
-11. **.movie " "** ex: _.movie star wars_ response all star wars movies    
-12. **.ps2 about** get Planetside 2 info    
+Simply type _.cmds_ to get started.      
 
 ---
 ## Configuration    
