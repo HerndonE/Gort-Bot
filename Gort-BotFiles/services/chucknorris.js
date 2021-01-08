@@ -4,8 +4,8 @@ const request = require('request');
 const filestream = require('fs');
 // used for stripping bad text out of user input
 const Sanitize = require("../sanitize");
-var Index = require('../index');
-var token = Index.token;
+require('dotenv').config();
+var token = process.env.TOKEN;
 var chucknorrismessage;
 const chuckNorrisPREFIX = '.';
 

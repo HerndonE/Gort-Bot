@@ -4,15 +4,14 @@ const request = require('request');
 const filestream = require('fs');
 // used for stripping bad text out of user input
 const Sanitize = require("../sanitize");
-var Index = require('../index');
-var token = Index.token;
+require('dotenv').config();
+var token = process.env.TOKEN;
 const weatherPREFIX = '.';
 var weathermessage;
 var openweathermapMessage = "Brought to you by openweathermap.org";
 
 bot.on('message', weathermessage => {
-    // let args =      weathermessage.content.substring(weatherPREFIX.length).split(" ");
-  
+   
     let raw_userinput = weathermessage.content.substring(weatherPREFIX.length)
     let safe_userinput = Sanitize.text(raw_userinput)
     let args = safe_userinput.split(" ");
@@ -39,7 +38,7 @@ bot.on('message', weathermessage => {
                     //test = true;
                     //console.log(true);
                     
-                    var apiKey = 'APIKEY';
+                    var apiKey = process.env.WEATHER_APIKEY;
                     let city = c2;
                     var url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`
                     

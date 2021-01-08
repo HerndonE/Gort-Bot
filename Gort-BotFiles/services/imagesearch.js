@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-var Index = require('../index');
-var token = Index.token;
+require('dotenv').config();
+var token = process.env.TOKEN;
 const Sanitize = require("../sanitize");
 const request = require('request');
 const imagePREFIX = '.';
@@ -12,7 +12,7 @@ bot.on('message', imagemessage => {
     let safe_userinput = Sanitize.text(raw_userinput)
     let args = safe_userinput.split(" ");
     var newText;
-    var apiKey = 'APIKEY';
+    var apiKey = process.env.IMAGE_APIKEY;
     switch (args[0]) {
         case 'image':
             //var check = (args[1]);//may need to reference back to this later

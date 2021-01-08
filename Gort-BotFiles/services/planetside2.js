@@ -4,10 +4,10 @@ const request = require('request');
 const filestream = require('fs');
 // used for stripping bad text out of user input
 const Sanitize = require("../sanitize");
-var Index = require('../index');
+require('dotenv').config();
+var token = process.env.TOKEN;
 const planetside2PREFIX = '.';
 var planetside2message;
-var token = Index.token;
 
 bot.on('message', planetside2message => {
    
@@ -140,7 +140,7 @@ return rhours + " hours and " + rminutes + " minutes.";
 /*
 // Create WebSocket connection. Will need to look on this later.
                     var WebSocket = require('ws')
-                    const socket = new WebSocket('');
+                    const socket = new WebSocket('wss://push.planetside2.com/streaming?environment=ps2&service-id=s:453746531');
 
                     // Connection opened
                     socket.addEventListener('open', function (event) {

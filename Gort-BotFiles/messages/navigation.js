@@ -1,14 +1,15 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-var Index = require('../index');
-var token = Index.token;
-var mysql = require('mysql');
+require('dotenv').config();
+var token = process.env.TOKEN;
 const filestream = require('fs');
 // used for stripping bad text out of user input
 const Sanitize = require("../sanitize");
 const PREFIX = '.';
-var version = '1.0.8'
+var version = '1.0.9'
 const paginate = require('discord.js-pagination');
+var data = require('./database');
+
 /*
 Command List
 */
@@ -166,7 +167,7 @@ const cmdAni = {
 
 function bz2InfoGrab(name, callback) {
     let stmt = 'SELECT * FROM bz2 WHERE name=?'; //column name
-    var con = herokuConnection();
+    var con = data.herokuConnection();
 
     con.query(stmt, [name], function(error, results) {
         if (error) {
@@ -186,7 +187,7 @@ function bz2InfoGrab(name, callback) {
 
 function bz2Dump(name) {
     let stmt = 'SELECT * FROM bz2 WHERE name=?';
-    var con = herokuConnection();
+    var con = data.herokuConnection();
     return new Promise(function(resolve, reject) {
         con.query(stmt, [name], function(error, results) {
             if (error) throw error;

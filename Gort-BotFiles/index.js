@@ -4,15 +4,15 @@ Made by: Ethan Herndon
 Desc: A bot made using fun applications while using Discord. A desired project that is
 now coming to life!
 github.com/HerndonE
-Gort Bot Version: 1.0.8
+Gort Bot Version: 1.0.9
 */
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const filestream = require('fs');
 // used for stripping bad text out of user input
 const Sanitize = require("./sanitize");
-// add secretes
-const token = 'YOURTOKENHERE';
+require('dotenv').config();
+const token = process.env.TOKEN;
 exports.token = token;
 
 //const gortFileImage = new Discord.MessageAttachment('../public/Images/Gort.jpg');
@@ -29,7 +29,6 @@ Animals = require("./services/animals");
 /*******Messages*******/
 Messages = require("./messages/messages");
 Navigation = require("./messages/navigation");
-
 
 bot.on('guildMemberAdd', member => {
 
@@ -83,9 +82,16 @@ bot.on('ready', () => {
 
 bot.on("presenceUpdate", (oldPresence, newPresence) => {
 //TODO: Fix streaming spam
-/*    //let channel = newPresence.guild.channels.cache.get(c => c.name === 'streaming')
+   //let channel = newPresence.guild.channels.cache.get(c => c.name === 'streaming')
 
     if (!newPresence.activities) return false;
+    oldPresence.activities.forEach(activity => {
+        //console.log(`${newPresence.user.tag} user is now ${newPresence.status} in guild ${newPresence.guild.name}`);
+        if (activity.type == "STREAMING") {
+            console.log("Wow Ethan!");
+            return;
+        };
+    });
     newPresence.activities.forEach(activity => {
         //console.log(`${newPresence.user.tag} user is now ${newPresence.status} in guild ${newPresence.guild.name}`);
         if (activity.type == "STREAMING") {
@@ -96,7 +102,7 @@ bot.on("presenceUpdate", (oldPresence, newPresence) => {
 
         };
     });
-*/
+
 });
 
 

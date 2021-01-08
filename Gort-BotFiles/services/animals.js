@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-var Index = require('../index');
-var token = Index.token;
+require('dotenv').config();
+var token = process.env.TOKEN;
 const Sanitize = require("../sanitize");
 const request = require('request');
 const animalPREFIX = '.';
