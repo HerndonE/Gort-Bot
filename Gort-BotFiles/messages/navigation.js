@@ -6,7 +6,7 @@ const filestream = require('fs');
 // used for stripping bad text out of user input
 const Sanitize = require("../sanitize");
 const PREFIX = '.';
-var version = '1.0.9'
+var version = '1.0.10'
 const paginate = require('discord.js-pagination');
 var data = require('./database');
 
@@ -81,6 +81,11 @@ const cmdUti = {
             value: '_.movie " "_',
             inline: true,
         },
+         {
+            name: '**4. Food & Drink**',
+            value: '_.food about_',
+            inline: true,
+        },
     ],
 };
 
@@ -140,6 +145,11 @@ const cmdAcc = {
         {
             name: "**5. Animal Search**",
             value: '_.animals_',
+            inline: true,
+        },
+        {
+            name: "**6. Need Advice?**",
+            value: '_.advice_',
             inline: true,
         },
     ],

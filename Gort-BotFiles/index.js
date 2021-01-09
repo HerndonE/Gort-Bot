@@ -4,7 +4,7 @@ Made by: Ethan Herndon
 Desc: A bot made using fun applications while using Discord. A desired project that is
 now coming to life!
 github.com/HerndonE
-Gort Bot Version: 1.0.9
+Gort Bot Version: 1.0.10
 */
 const Discord = require('discord.js');
 const bot = new Discord.Client();
@@ -26,9 +26,11 @@ Movie = require("./services/movie");
 PlanetSide2 = require("./services/planetside2");
 Images = require("./services/imagesearch");
 Animals = require("./services/animals");
+Food = require("./services/food");
 /*******Messages*******/
 Messages = require("./messages/messages");
 Navigation = require("./messages/navigation");
+Advice = require("./messages/advice");
 
 bot.on('guildMemberAdd', member => {
 
@@ -84,7 +86,7 @@ bot.on("presenceUpdate", (oldPresence, newPresence) => {
 //TODO: Fix streaming spam
    //let channel = newPresence.guild.channels.cache.get(c => c.name === 'streaming')
 
-    if (!newPresence.activities) return false;
+   /* if (!newPresence.activities) return false;
     oldPresence.activities.forEach(activity => {
         //console.log(`${newPresence.user.tag} user is now ${newPresence.status} in guild ${newPresence.guild.name}`);
         if (activity.type == "STREAMING") {
@@ -101,7 +103,7 @@ bot.on("presenceUpdate", (oldPresence, newPresence) => {
             ticketChannel.send(`${newPresence.user.tag} is streaming at ${activity.url}.`)
 
         };
-    });
+    });*/
 
 });
 

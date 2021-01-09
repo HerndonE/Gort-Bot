@@ -114,10 +114,16 @@ Update 10:
             2. .dog
     Fixed database
     Removed fnaf table
-    
+
 /*********************/
 1.6.2021
 Update 11:
     Gort bot version 1.0.9 is live!
     Add env variables.
     Modularize database connection.
+
+/*********************/
+1.8.2021
+Update 11:
+    Gort bot version 1.0.10 is live!
+    Add Food and Advice apis.
