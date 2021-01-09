@@ -46,7 +46,8 @@ openweathermap.org      covidtracking.com
 rickandmortyapi.com     pixabay.com            
 api.icndb.com           omdbapi.com     
 corona-api.com          random.dog    
-aws.random.cat
+aws.random.cat          taco-randomizer    
+api.adviceslip          foodish-api
 ```    
    
 

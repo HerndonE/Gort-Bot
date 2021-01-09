@@ -98,9 +98,23 @@ bot.on('message', foodmessage => {
                     let parsedData = JSON.parse(body)
                 
                 baseLayer = parsedData["base_layer"]["recipe"];  
-                //condiment = parsedData["condiment"]["recipe"]
-                //shellRecipe =  parsedData["shell"]["recipe"];
+                condiment = "Sorry there is no condiment for this Taco";
+                if(parsedData["condiment"]){ // - OC
+                    if(parsedData["condiment"]["recipe"]){
+                        condiment = parsedData["condiment"]["recipe"];
+                    }
+                }
                 
+                //check if they are more than 2000 words. Otherwise it is ok for now
+                 
+                shellRecipe = "Sorry there is no shell recipe for this Taco";
+                if(parsedData["shell"]){
+                    if(parsedData["shell"]["recipe"]){
+                        shellRecipe = parsedData["shell"]["recipe"];
+                    }
+                }
+                
+          
                 const p1 = new Discord.MessageEmbed()
                 .setColor("0x999999")
                 .setTitle(parsedData["slug"])
@@ -111,16 +125,18 @@ bot.on('message', foodmessage => {
                 .setTitle("Base Layer")
                 .setDescription(baseLayer)
 
-              /*const p3 = new Discord.MessageEmbed()
+                const p3 = new Discord.MessageEmbed()
                 .setColor("0x999999")
-                .setDescription(condiment)*/
+                .setTitle("Condiment Recipe")
+                .setDescription(condiment)
 
-              /*const p4 = new Discord.MessageEmbed()
+                const p4 = new Discord.MessageEmbed()
                 .setColor("0x999999")
-                .setDescription(shellRecipe)*/
+                .setTitle("Shell Recipe")
+                .setDescription(shellRecipe)
 
                 let pages = [
-                p1, p2//, p3, p4
+                p1, p2, p3, p4
                 ]
 
                 let emojis = [
