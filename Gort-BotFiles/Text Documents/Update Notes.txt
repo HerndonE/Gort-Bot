@@ -127,3 +127,8 @@ Update 11:
 Update 11:
     Gort bot version 1.0.10 is live!
     Add Food and Advice apis.
+    
+/*********************/
+1.14.2021
+Update 12:
+    Add brewery api.
