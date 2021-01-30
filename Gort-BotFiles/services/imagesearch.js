@@ -51,7 +51,6 @@ bot.on('message', imagemessage => {
                 imagemessage.channel.send({
                     embed: new Discord.MessageEmbed()
                         .setTitle("Gort Image Search!")
-                        .setThumbnail('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_k76-s3pPH7ORxG6lI4c6c0fVskmLICRX0zNLJ4Ouns_eEeJnlc88I4Aok2BXJM-x_nVZaedZ&usqp=CAc')
                         .setColor("0x999999")
                         .setImage(parsedData.hits[randomIndex].largeImageURL) //certain instances like this can occur
                         //Cannot read property 'largeImageURL' of undefined
