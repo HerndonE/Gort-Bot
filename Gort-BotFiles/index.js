@@ -4,7 +4,7 @@ Made by: Ethan Herndon
 Desc: A bot made using fun applications while using Discord. A desired project that is
 now coming to life!
 github.com/HerndonE
-Gort Bot Version: 1.0.10
+Gort Bot Version: 1.0.11
 */
 const Discord = require('discord.js');
 const bot = new Discord.Client();
@@ -27,6 +27,7 @@ PlanetSide2 = require("./services/planetside2");
 Images = require("./services/imagesearch");
 Animals = require("./services/animals");
 Food = require("./services/food");
+Spacex = require("./services/spacex");
 /*******Messages*******/
 Messages = require("./messages/messages");
 Navigation = require("./messages/navigation");
