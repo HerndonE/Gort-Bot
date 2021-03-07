@@ -87,25 +87,15 @@ bot.on("presenceUpdate", (oldPresence, newPresence) => {
 //TODO: Fix streaming spam
    //let channel = newPresence.guild.channels.cache.get(c => c.name === 'streaming')
 
-   /* if (!newPresence.activities) return false;
-    oldPresence.activities.forEach(activity => {
-        //console.log(`${newPresence.user.tag} user is now ${newPresence.status} in guild ${newPresence.guild.name}`);
-        if (activity.type == "STREAMING") {
-            console.log("Wow Ethan!");
-            return;
-        };
-    });
+   if (!newPresence.activities) return false;
     newPresence.activities.forEach(activity => {
-        //console.log(`${newPresence.user.tag} user is now ${newPresence.status} in guild ${newPresence.guild.name}`);
         if (activity.type == "STREAMING") {
             console.log(`${newPresence.user.tag} is streaming at ${activity.url}.`);
             let guildChannels = newPresence.guild.channels;
             const ticketChannel = guildChannels.guild.channels.cache.find(channel => channel.name === 'streaming')
             ticketChannel.send(`${newPresence.user.tag} is streaming at ${activity.url}.`)
-
         };
-    });*/
-
+    });
 });
 
 
