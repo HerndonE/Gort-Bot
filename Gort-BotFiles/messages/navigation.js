@@ -10,6 +10,8 @@ var version = '1.0.11'
 const paginate = require('discord.js-pagination');
 var data = require('./database');
 
+const disbut = require('discord.js-buttons')(bot);
+
 /*
 Command List
 */
@@ -86,7 +88,7 @@ const cmdUti = {
             value: '_.food about_',
             inline: true,
         },
-		{
+         {
             name: '**5. SpaceX**',
             value: '_.spacex about_',
             inline: true,
@@ -319,13 +321,11 @@ bot.on('message', async msg => {
             });
             break;
         case 'info':
-            msg.channel.send({
-                embed: new Discord.MessageEmbed()
+            //**Invite Gort** [here](https://discord.com/oauth2/authorize?client_id=723709096175468636&scope=bot)
+           let myembed = new Discord.MessageEmbed()
                     .setTitle("Gort Bot Information")
                     .setColor("0x999999")
                     .setDescription(`**Version:** ${version} 
-            
-**Invite Gort** [here](https://discord.com/oauth2/authorize?client_id=723709096175468636&scope=bot)
             
 🤖 Gort Bot can be found in **${bot.guilds.cache.size}** servers
             
@@ -341,7 +341,13 @@ I am following Isaac Asimovs "Three Laws of Robotics"
     A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.
               `)
                     .setTimestamp()
-            });
+              let inviteGortButton = new disbut.MessageButton()
+                        .setStyle('url')
+                        .setLabel('Invite Gort') //default: NO_LABEL_PROVIDED
+                        .setID('click_to_function') //note: if you use the style "url" you must provide url using .setURL('https://example.com')
+                        .setURL('https://discord.com/oauth2/authorize?client_id=723709096175468636&scope=bot')
+
+            msg.channel.send({ button: inviteGortButton, embed: myembed });
             break;
         case 'userinfo':
             let userEmbed = new Discord.MessageEmbed()
