@@ -1,3 +1,15 @@
+/**
+ * Name: Ethan Herndon
+ * Filename: navigation.js
+ * Description: The .js file provides information to the user on how to navigate Gort bot.
+ * There are 5 main sections to Gort (subject to change)
+ * 1. Main directory
+ * 2. Information
+ * 3. Utility
+ * 4. Games
+ * 5. Accessories
+ * API: None
+*/
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 require('dotenv').config();
@@ -6,11 +18,11 @@ const filestream = require('fs');
 // used for stripping bad text out of user input
 const Sanitize = require("../sanitize");
 const PREFIX = '.';
-var version = '1.0.11'
+var version = '1.0.12'
 const paginate = require('discord.js-pagination');
 var data = require('./database');
+const { navDisbut } = require('../index');
 
-const disbut = require('discord.js-buttons')(bot);
 
 /*
 Command List
@@ -114,11 +126,6 @@ const cmdGames = {
             value: '_.ps2 about_',
             inline: true,
         },
-        /*{
-            name: "**3. Five Night's at Freddy's**",
-            value: '_.fnf about_',
-            inline: true,
-        },*/
     ],
 };
 
@@ -215,19 +222,7 @@ function bz2Dump(name) {
     });
 }
 
-/*function fnfDump(name) {
-    let stmt = 'SELECT * FROM fnf WHERE name=?';
-    var con = herokuConnection();
-    return new Promise(function(resolve, reject) {
-        con.query(stmt, [name], function(error, results) {
-            if (error) throw error;
-            con.end();
-            console.log(results);
-            resolve(results);
-        });
-    });
-}
-*/
+
 bot.on('message', async msg => {
     // let args = msg.content.substring(PREFIX.length).split(" ");
 
@@ -266,29 +261,6 @@ bot.on('message', async msg => {
 
             paginate(msg, pages, emojis, 60000)
             break;
-
-/*        case 'fnf':
-            let fnfInfo = await fnfDump(args[1]);
-            console.log(fnfInfo);
-            var fnf = fnfInfo.length > 0 ? fnfInfo[0] : "DNE";
-            if (fnf === "DNE") {
-                msg.channel.send("What are you doing?!")
-            } else {
-                //msg.channel.send(fnf.info)
-                //msg.channel.send(bz2.picture)
-                msg.channel.send({
-                    embed: new Discord.MessageEmbed()
-                        .setTitle("Five Night's at Freddy's Character Stats")
-                        .setImage(fnf.picture)
-                        .setColor("0x999999")
-                        .setDescription(fnf.info + '\n\n' + fnf.about)
-                        .setTimestamp()
-                        .setFooter("Five Night's at Freddy's")
-                });
-
-            }
-            //console.log("Info: " + fnf.info + '\n' + fnf.quote);
-            break;*/
         case 'bz2':
             let bz2Info = await bz2Dump(args[1]);
             console.log(bz2Info);
@@ -308,7 +280,12 @@ bot.on('message', async msg => {
             }
             break;
         case 'ping':
-            msg.channel.send('pong!')
+            //msg.channel.send('pong!')
+            // https://stackoverflow.com/questions/63411268/discord-js-ping-command
+            msg.channel.send('Loading data').then (async (msg) =>{
+                msg.delete()
+                msg.channel.send(`🏓  Latency: ${msg.createdTimestamp - msg.createdTimestamp}ms.\nAPI Latency: ${Math.round(bot.ws.ping)}ms`);
+              })
             break;
         case 'commands':
             msg.channel.send({
@@ -341,7 +318,7 @@ I am following Isaac Asimovs "Three Laws of Robotics"
     A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.
               `)
                     .setTimestamp()
-              let inviteGortButton = new disbut.MessageButton()
+              let inviteGortButton = new navDisbut.MessageButton()
                         .setStyle('url')
                         .setLabel('Invite Gort') //default: NO_LABEL_PROVIDED
                         .setID('click_to_function') //note: if you use the style "url" you must provide url using .setURL('https://example.com')
@@ -362,7 +339,6 @@ I am following Isaac Asimovs "Three Laws of Robotics"
                 .addField("Status:", `${msg.author.presence.status}`, true)
                 .addField("Created At:", `${msg.author.createdAt}`, true)
                 .addField("Joined At:", msg.member.joinedAt, true)
-                .setFooter("by Gort Bot. ", 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_k76-s3pPH7ORxG6lI4c6c0fVskmLICRX0zNLJ4Ouns_eEeJnlc88I4Aok2BXJM-x_nVZaedZ&usqp=CAc');
             msg.channel.send({
                 embed: userEmbed
             });

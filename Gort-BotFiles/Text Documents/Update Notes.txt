@@ -114,7 +114,7 @@ Update 10:
             2. .dog
     Fixed database
     Removed fnaf table
-
+    
 /*********************/
 1.6.2021
 Update 11:
@@ -132,3 +132,24 @@ Update 11:
 1.14.2021
 Update 12:
     Add brewery api.
+    
+/*********************/
+2.13.2021
+Update 13:
+    Add SpaceX api.
+
+/*********************/
+8.5.2021
+Update 14:
+    Made use of new Discord buttons
+
+/*********************/
+8.7.2021
+Update 15:
+    Gort bot version 1.0.12 is live!
+    Minor code clean up.
+    Updated index,navigation,spacex,advice,and messages.js
+    Moved "greeting users to server" and streaming feature from index.js to messages.js
+    Update ping command: users will recieve latency and api latency response.
+    Removed footer from .userinfo
+    Removed Five Nights at Freddys code from navigation.

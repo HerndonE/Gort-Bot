@@ -1,3 +1,9 @@
+/**
+ * Name: Ethan Herndon
+ * Filename: advice.js
+ * Description: The .js file uses an api to give advice to the user.
+ * API: https://api.adviceslip.com/advice 
+*/
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 require('dotenv').config();
@@ -6,6 +12,7 @@ const Sanitize = require("../sanitize");
 const request = require('request');
 const advicePREFIX = '.';
 var advicemessage;
+
 bot.on('message', advicemessage => {
 
     let raw_userinput = advicemessage.content.substring(advicePREFIX.length)
