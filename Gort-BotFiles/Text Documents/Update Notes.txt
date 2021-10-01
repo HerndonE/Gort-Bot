@@ -153,3 +153,9 @@ Update 15:
     Update ping command: users will recieve latency and api latency response.
     Removed footer from .userinfo
     Removed Five Nights at Freddys code from navigation.
+
+/*********************/
+10.1.2021
+Update 16:
+    Thanks to mnemonicmnome, taco api no longer works and removing the functionality
+    from the bot.

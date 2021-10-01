@@ -29,13 +29,15 @@ const cmdFood = {
             value: '_.food_',
             inline: true,
         },
-        {
+        /* API no longer working, keeping this for documentation
+        { 
             name: '**2. Taco Recipes**',
             value: '_.taco_',
             inline: true,
         },
+        */
         {
-            name: '**3. Find Breweries**',
+            name: '**2. Find Breweries**',
             value: '_.breweries about_',
             inline: true,
         },
@@ -122,10 +124,11 @@ bot.on('message', foodmessage => {
             }
 
             break;
-
+        /* API no longer working, keeping this for documentation
         case 'taco':
             randoTaco(foodmessage);
             break;
+        */    
         case 'breweries':
             brewText = args.join(" ");
             if (args[1] == null) {
@@ -157,6 +160,7 @@ bot.on('message', foodmessage => {
 
 })
 
+/* API no longer working, keeping this for documentation
 function randoTaco(foodmessage) {
     var baseLayer;
     var condiment;
@@ -222,7 +226,7 @@ function randoTaco(foodmessage) {
     });
     return;
 }
-
+*/
 function breweriesCity(foodmessage) {
     var cityText = brewText.replace("breweries city ", "");
     console.log(cityText);
