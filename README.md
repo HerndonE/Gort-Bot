@@ -46,11 +46,14 @@ openweathermap.org      covidtracking.com
 rickandmortyapi.com     pixabay.com            
 api.icndb.com           omdbapi.com     
 corona-api.com          random.dog    
-aws.random.cat          ~~taco-randomizer~~    
-api.adviceslip          foodish-api    
-openbrewerydb.com       api.spacexdata.com    
+aws.random.cat          foodish-api        
+api.adviceslip          api.spacexdata.com        
+openbrewerydb.com           
 ```    
-   
+## APIs Retired
+```
+taco-randomizer    
+```   
 
 ----
 ## Issues
