@@ -30,6 +30,7 @@ Daily Bug Fixes, Updates and new features
 Simply type _.cmds_ to get started.      
 
 ---
+<!--
 ## Configuration    
 
 1. Gort will alert the server whenever someone is streaming!    
@@ -40,6 +41,7 @@ Simply type _.cmds_ to get started.
 
 
 ----
+-->
 ## APIs Used    
 ```
 openweathermap.org      covidtracking.com
