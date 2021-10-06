@@ -1,26 +1,16 @@
-//https://stackoverflow.com/questions/45932650/how-to-check-if-a-url-or-a-webservice-is-alive-in-nodejs
+const { Message } = require('discord.js');
 const request = require('request');
+var message;
 
-function checkurl(url){
-request(url , function (error, response, body) {
-
-  if(error){
-    console.log('Error: '+ error);
-    return;
-  }
-  
-  if(response.statusCode >= 400) {//Numbers are set accordingly to Status Codes: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-    console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌" );
-    return;
-
-}
-else {
-  //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" Status:✔️");
-  //return;
-}
- 
-});
-
+var helperVals ={
+  sendMessageToCreator : false,
+  message 
 }
 
-exports.checkurl = checkurl;
+function sendMessageAboutAPI(message){
+  message.reply("Thank you for trying out this feature, it seems that this feature is no longer working. I have pinged my creator to resolve this matter.");
+}
+
+exports.helperVals = helperVals;
+exports.sendMessageAboutAPI = sendMessageAboutAPI;
+

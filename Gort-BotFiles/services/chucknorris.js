@@ -8,7 +8,7 @@ require('dotenv').config();
 var token = process.env.TOKEN;
 var chucknorrismessage;
 const chuckNorrisPREFIX = '.';
-
+const helper = require("../helpers/helper.js");
 
 bot.on('message', chucknorrismessage => {
     let raw_userinput = chucknorrismessage.content.substring(chuckNorrisPREFIX.length)
@@ -30,6 +30,18 @@ bot.on('message', chucknorrismessage => {
                             chucknorrismessage.channel.send("Error! You may have mistyped something. :(")
                             return;
                         }
+                    }
+                    if (response.statusCode >= 400) {
+                        console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                        if (helper.helperVals.sendMessageToCreator == false) {
+                            bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                                "It is imperative that this situation gets resolved");
+                            helper.sendMessageAboutAPI(chucknorrismessage);
+                            helper.helperVals.sendMessageToCreator = true;
+                        }
+                        return;
+                    } else {
+                        //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
                     }
                     let parsedData = JSON.parse(body)
                     

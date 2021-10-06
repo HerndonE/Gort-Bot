@@ -9,6 +9,7 @@ var token = process.env.TOKEN;
 var foodmessage;
 const foodPREFIX = '.';
 const paginate = require('discord.js-pagination');
+const helper = require("../helpers/helper.js");
 
 //Nasa TODO
 //https://developers.zomato.com/api
@@ -98,12 +99,24 @@ bot.on('message', foodmessage => {
                 return;
             }
             if (input == "food") {
-                var url = "https://foodish-api.herokuapp.com/api/"; //random food api
+                var url = "https://foodish-api.herokuapp.com/api/" //random food api
                 request(url, function(err, response, body) {
                     if (err) {
                         console.log('error:', err);
                     } else {
                         console.log('body:', body);
+                    }
+                    if (response.statusCode >= 400) {
+                        console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                        if (helper.helperVals.sendMessageToCreator == false) {
+                            bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                                "It is imperative that this situation gets resolved");
+                            helper.sendMessageAboutAPI(foodmessage);
+                            helper.helperVals.sendMessageToCreator = true;
+                        }
+                        return;
+                    } else {
+                        //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
                     }
                     let parsedData = JSON.parse(body)
 
@@ -124,11 +137,11 @@ bot.on('message', foodmessage => {
             }
 
             break;
-        /* API no longer working, keeping this for documentation
+            /* API no longer working, keeping this for documentation
         case 'taco':
             randoTaco(foodmessage);
             break;
-        */    
+            */    
         case 'breweries':
             brewText = args.join(" ");
             if (args[1] == null) {
@@ -172,6 +185,20 @@ function randoTaco(foodmessage) {
         } else {
             //console.log('body:', body);
         }
+
+        if (response.statusCode >= 400) {
+            console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+            if (helper.helperVals.sendMessageToCreator == false) {
+                bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                    "It is imperative that this situation gets resolved");
+                helper.sendMessageAboutAPI(foodmessage);
+                helper.helperVals.sendMessageToCreator = true;
+            }
+            return;
+        } else {
+            //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
+        }
+
         let parsedData = JSON.parse(body)
 
         baseLayer = parsedData["base_layer"]["recipe"];
@@ -236,6 +263,18 @@ function breweriesCity(foodmessage) {
             console.log('error:', err);
         } else {
             //console.log('body:', body);
+        }
+        if (response.statusCode >= 400) {
+            console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+            if (helper.helperVals.sendMessageToCreator == false) {
+                bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                    "It is imperative that this situation gets resolved");
+                helper.sendMessageAboutAPI(foodmessage);
+                helper.helperVals.sendMessageToCreator = true;
+            }
+            return;
+        } else {
+            //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
         }
         let parsedData = JSON.parse(body)
         var pageLength = parsedData.length;
@@ -352,6 +391,18 @@ function breweriesName(foodmessage) {
         } else {
             //console.log('body:', body);
         }
+        if (response.statusCode >= 400) {
+            console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+            if (helper.helperVals.sendMessageToCreator == false) {
+                bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                    "It is imperative that this situation gets resolved");
+                helper.sendMessageAboutAPI(foodmessage);
+                helper.helperVals.sendMessageToCreator = true;
+            }
+            return;
+        } else {
+            //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
+        }
         let parsedData = JSON.parse(body)
         var pageLength = parsedData.length;
         var needArray = [];
@@ -466,6 +517,18 @@ function breweriesState(foodmessage) {
             console.log('error:', err);
         } else {
             //console.log('body:', body);
+        }
+        if (response.statusCode >= 400) {
+            console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+            if (helper.helperVals.sendMessageToCreator == false) {
+                bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                    "It is imperative that this situation gets resolved");
+                helper.sendMessageAboutAPI(foodmessage);
+                helper.helperVals.sendMessageToCreator = true;
+            }
+            return;
+        } else {
+            //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
         }
         let parsedData = JSON.parse(body)
         var pageLength = parsedData.length;
@@ -583,6 +646,18 @@ function breweriesZip(foodmessage) {
         } else {
             //console.log('body:', body);
         }
+        if (response.statusCode >= 400) {
+            console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+            if (helper.helperVals.sendMessageToCreator == false) {
+                bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                    "It is imperative that this situation gets resolved");
+                helper.sendMessageAboutAPI(foodmessage);
+                helper.helperVals.sendMessageToCreator = true;
+            }
+            return;
+        } else {
+            //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
+        }
         let parsedData = JSON.parse(body)
         var pageLength = parsedData.length;
         var needArray = [];
@@ -687,6 +762,8 @@ function breweriesZip(foodmessage) {
     });
     return;
 }
+
+
 
 
 bot.on('ready', () => {

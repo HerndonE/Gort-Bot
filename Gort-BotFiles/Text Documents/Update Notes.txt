@@ -159,3 +159,9 @@ Update 15:
 Update 16:
     Thanks to mnemonicmnome, taco api no longer works and removing the functionality
     from the bot.
+
+/*********************/
+10.5.2021
+Update 17:
+    Implemented a new helper function that checks API link status codes, applied on food, animals, and
+    chucknorris.js
