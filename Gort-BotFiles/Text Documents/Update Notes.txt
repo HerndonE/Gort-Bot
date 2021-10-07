@@ -165,3 +165,8 @@ Update 16:
 Update 17:
     Implemented a new helper function that checks API link status codes, applied on food, animals, and
     chucknorris.js
+
+/*********************/
+10.6.2021
+Update 18:
+    Applied API helper function to spacex, rick and morty, and weather.

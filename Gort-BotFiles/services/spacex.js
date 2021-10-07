@@ -16,7 +16,7 @@ var spacexmessage;
 const spaceXPREFIX = '.';
 const { navDisbut } = require('../index');
 const console = require('console');
-
+const helper = require("../helpers/helper.js");
 /*
 SpaceX List
 */
@@ -71,6 +71,18 @@ bot.on('message', spacexmessage => {
                             console.log('error:', err);
                         } else {
                             //console.log('body:', body);
+                        }
+                        if (response.statusCode >= 400) {
+                            console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                            if (helper.helperVals.sendMessageToCreator == false) {
+                                bot.users.cache.get("214992583582154753").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                                    "It is imperative that this situation gets resolved");
+                                helper.sendMessageAboutAPI(spacexmessage);
+                                helper.helperVals.sendMessageToCreator = true;
+                            }
+                            return;
+                        } else {
+                            //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
                         }
                         let parsedData = JSON.parse(body)
                         let webcastMessage,wikipediaMessage,launchMessage,campaignMessage,recoveryMessage;
@@ -145,6 +157,18 @@ bot.on('message', spacexmessage => {
                             console.log('error:', err);
                         } else {
                             //console.log('body:', body);
+                        }
+                        if (response.statusCode >= 400) {
+                            console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                            if (helper.helperVals.sendMessageToCreator == false) {
+                                bot.users.cache.get("214992583582154753").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                                    "It is imperative that this situation gets resolved");
+                                helper.sendMessageAboutAPI(spacexmessage);
+                                helper.helperVals.sendMessageToCreator = true;
+                            }
+                            return;
+                        } else {
+                            //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
                         }
                         let parsedData = JSON.parse(body)
                         
@@ -223,6 +247,18 @@ bot.on('message', spacexmessage => {
                         console.log('error:', err);
                     } else {
                         //console.log('body:', body);
+                    }
+                    if (response.statusCode >= 400) {
+                        console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                        if (helper.helperVals.sendMessageToCreator == false) {
+                            bot.users.cache.get("214992583582154753").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                                "It is imperative that this situation gets resolved");
+                            helper.sendMessageAboutAPI(spacexmessage);
+                            helper.helperVals.sendMessageToCreator = true;
+                        }
+                        return;
+                    } else {
+                        //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
                     }
                     let parsedData = JSON.parse(body)
                     let websiteMessage,flickrMessage,twitterMessage,twitterElonMessage;

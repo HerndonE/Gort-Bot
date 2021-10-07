@@ -8,6 +8,7 @@ require('dotenv').config();
 var token = process.env.TOKEN;
 const rnmPrefix = '.';
 var rickandmortymessage;
+const helper = require("../helpers/helper.js");
 
 bot.on('message', rickandmortymessage => {
 
@@ -67,6 +68,18 @@ bot.on('message', rickandmortymessage => {
                                 return;
                             }
                         }
+                        if (response.statusCode >= 400) {
+                            console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                            if (helper.helperVals.sendMessageToCreator == false) {
+                                bot.users.cache.get("214992583582154753").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                                    "It is imperative that this situation gets resolved");
+                                helper.sendMessageAboutAPI(rickandmortymessage);
+                                helper.helperVals.sendMessageToCreator = true;
+                            }
+                            return;
+                        } else {
+                            //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
+                        }
                         let parsedData = JSON.parse(body)
                         if (parsedData["error"]){
                               rickandmortymessage.channel.send("_Yeah, sure, I mean, if you spend all day shuffling words_" + 
@@ -119,6 +132,18 @@ bot.on('message', rickandmortymessage => {
                                 " _around, you can make anything sound bad, Morty._")
                                 return;
                             }
+                        }
+                        if (response.statusCode >= 400) {
+                            console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                            if (helper.helperVals.sendMessageToCreator == false) {
+                                bot.users.cache.get("214992583582154753").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                                    "It is imperative that this situation gets resolved");
+                                helper.sendMessageAboutAPI(rickandmortymessage);
+                                helper.helperVals.sendMessageToCreator = true;
+                            }
+                            return;
+                        } else {
+                            //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
                         }
                         let parsedData = JSON.parse(body)
                          if (parsedData["error"]){
@@ -181,6 +206,18 @@ bot.on('message', rickandmortymessage => {
                                 return;
                             }
                             
+                        }
+                        if (response.statusCode >= 400) {
+                            console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                            if (helper.helperVals.sendMessageToCreator == false) {
+                                bot.users.cache.get("214992583582154753").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                                    "It is imperative that this situation gets resolved");
+                                helper.sendMessageAboutAPI(rickandmortymessage);
+                                helper.helperVals.sendMessageToCreator = true;
+                            }
+                            return;
+                        } else {
+                            //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
                         }
                         let parsedData = JSON.parse(body)
                         rickandmortymessage.channel.send({

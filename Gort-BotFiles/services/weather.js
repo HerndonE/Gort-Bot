@@ -9,6 +9,7 @@ var token = process.env.TOKEN;
 const weatherPREFIX = '.';
 var weathermessage;
 var openweathermapMessage = "Brought to you by openweathermap.org";
+const helper = require("../helpers/helper.js");
 
 bot.on('message', weathermessage => {
    
@@ -63,6 +64,18 @@ bot.on('message', weathermessage => {
                             return;
                         }
                     }
+                    if (response.statusCode >= 400) {
+                        console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                        if (helper.helperVals.sendMessageToCreator == false) {
+                            bot.users.cache.get("214992583582154753").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                                "It is imperative that this situation gets resolved");
+                            helper.sendMessageAboutAPI(weathermessage);
+                            helper.helperVals.sendMessageToCreator = true;
+                        }
+                        return;
+                    } else {
+                        //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
+                    }
                     let weather = JSON.parse(body)
                     var sunset = weather.sys.sunset;
                     var newSunset = new Date(sunset * 1000);
@@ -86,6 +99,9 @@ bot.on('message', weathermessage => {
                                   
                                 color: 0x999999,
 	                            title: 'Current Weather Report \n ~ Gort Bot',
+	                            thumbnail: {
+		                        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_k76-s3pPH7ORxG6lI4c6c0fVskmLICRX0zNLJ4Ouns_eEeJnlc88I4Aok2BXJM-x_nVZaedZ&usqp=CAc',
+	                            },
                                 description: message,
                                 image: {
                                     url: weatherIcon
