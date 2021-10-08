@@ -43,6 +43,18 @@ bot.on('message', imagemessage => {
                         return;
                     }
                 }
+                if (response.statusCode >= 400) {
+                    console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                    if (helper.helperVals.sendMessageToCreator == false) {
+                        bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                            "It is imperative that this situation gets resolved");
+                        helper.sendMessageAboutAPI(imagemessage);
+                        helper.helperVals.sendMessageToCreator = true;
+                    }
+                    return;
+                } else {
+                    //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
+                }
                 let parsedData = JSON.parse(body)
                 let randomIndex = Math.floor(Math.random() * 20);
                 //resolve(parsedData);

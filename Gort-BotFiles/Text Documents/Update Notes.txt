@@ -177,3 +177,8 @@ Update 19:
     Applied API helper function to movie, ps2, covid, and advice.
     removed api.thevirustracker.com/free-api?global=stats ie api.thevirustracker.com.
     Future TODOS: accomadate connect ECONNREFUSED links and modify covid commands.
+
+/*********************/
+10.8.2021
+Update 20:
+    Applied API helper function to image.js
