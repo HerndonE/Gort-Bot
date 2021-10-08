@@ -8,7 +8,7 @@ require('dotenv').config();
 var token = process.env.TOKEN;
 var moviemessage;
 const moviePREFIX = '.';
-
+const helper = require("../helpers/helper.js");
 const paginate = require('discord.js-pagination');
 
 bot.on('message', moviemessage => {
@@ -35,6 +35,18 @@ bot.on('message', moviemessage => {
                     if (err) {
                         console.log('error:', err);
                     } else {}
+                    if (response.statusCode >= 400) {
+                        console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                        if (helper.helperVals.sendMessageToCreator == false) {
+                            bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                                "It is imperative that this situation gets resolved");
+                            helper.sendMessageAboutAPI(moviemessage);
+                            helper.helperVals.sendMessageToCreator = true;
+                        }
+                        return;
+                    } else {
+                        //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
+                    }
                     let parsedData = JSON.parse(body)
 
                     if (parsedData["error"]) {
@@ -256,6 +268,7 @@ bot.on('message', moviemessage => {
                             .setImage(imageTen)
                             .setFooter('By http://www.omdbapi.com')
 
+                     
                         let pages = [
                             p1, p2, p3, p4, p5, p6, p7, p8, p9, p10
                         ]
@@ -264,6 +277,8 @@ bot.on('message', moviemessage => {
                             "⬅️",
                             "➡️",
                         ]
+
+                       
 
                         paginate(moviemessage, pages, emojis, 120000)
                         return;

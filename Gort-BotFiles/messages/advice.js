@@ -12,6 +12,7 @@ const Sanitize = require("../sanitize");
 const request = require('request');
 const advicePREFIX = '.';
 var advicemessage;
+const helper = require("../helpers/helper.js");
 
 bot.on('message', advicemessage => {
 
@@ -26,6 +27,18 @@ bot.on('message', advicemessage => {
                     console.log('error:', err);
                 } else {
                     console.log('body:', body);
+                }
+                if (response.statusCode >= 400) {
+                    console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                    if (helper.helperVals.sendMessageToCreator == false) {
+                        bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                            "It is imperative that this situation gets resolved");
+                        helper.sendMessageAboutAPI(advicemessage);
+                        helper.helperVals.sendMessageToCreator = true;
+                    }
+                    return;
+                } else {
+                    //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
                 }
                 let parsedData = JSON.parse(body)
                 advicemessage.channel.send({

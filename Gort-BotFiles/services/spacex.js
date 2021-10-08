@@ -75,7 +75,7 @@ bot.on('message', spacexmessage => {
                         if (response.statusCode >= 400) {
                             console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
                             if (helper.helperVals.sendMessageToCreator == false) {
-                                bot.users.cache.get("214992583582154753").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                                bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
                                     "It is imperative that this situation gets resolved");
                                 helper.sendMessageAboutAPI(spacexmessage);
                                 helper.helperVals.sendMessageToCreator = true;
@@ -161,7 +161,7 @@ bot.on('message', spacexmessage => {
                         if (response.statusCode >= 400) {
                             console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
                             if (helper.helperVals.sendMessageToCreator == false) {
-                                bot.users.cache.get("214992583582154753").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                                bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
                                     "It is imperative that this situation gets resolved");
                                 helper.sendMessageAboutAPI(spacexmessage);
                                 helper.helperVals.sendMessageToCreator = true;
@@ -251,7 +251,7 @@ bot.on('message', spacexmessage => {
                     if (response.statusCode >= 400) {
                         console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
                         if (helper.helperVals.sendMessageToCreator == false) {
-                            bot.users.cache.get("214992583582154753").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                            bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
                                 "It is imperative that this situation gets resolved");
                             helper.sendMessageAboutAPI(spacexmessage);
                             helper.helperVals.sendMessageToCreator = true;

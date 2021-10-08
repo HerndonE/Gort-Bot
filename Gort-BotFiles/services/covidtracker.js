@@ -8,6 +8,7 @@ require('dotenv').config();
 var token = process.env.TOKEN;
 const covidPrefix = '.';
 var covidmessage;
+const helper = require("../helpers/helper.js");
 
 bot.on('message', covidmessage => {
 
@@ -45,6 +46,18 @@ bot.on('message', covidmessage => {
                             console.log('error:', err);
                         } else {
                             //console.log('body:', body);
+                        }
+                        if (response.statusCode >= 400) {
+                            console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                            if (helper.helperVals.sendMessageToCreator == false) {
+                                bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                                    "It is imperative that this situation gets resolved");
+                                helper.sendMessageAboutAPI(covidmessage);
+                                helper.helperVals.sendMessageToCreator = true;
+                            }
+                            return;
+                        } else {
+                            //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
                         }
                         let parsedData = JSON.parse(body)
 
@@ -107,53 +120,13 @@ bot.on('message', covidmessage => {
                                     "**USA State Search:**" + '\n' +
                                     "EX: .covid _insert state name/abbrv here_" + '\n' +
                                     "**Country Search:**" + '\n' +
-                                    "EX: .covid country _insert country name/abbrv here_" + '\n' +
-                                    "**Global Search:** API NOT WORKING ANYMORE, STAY TUNE!" + '\n' +
-                                    "EX: .covid _global or worldwide here_" + '\n'
+                                    "EX: .covid country _insert country name/abbrv here_" + '\n'
                                 )
                                 .setTimestamp()
                                 .setFooter('By Gort Bot')
 
                         });
-
                         return;
-                    case 'global':
-                    case 'worldwide':
-                        flag = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/440px-The_Earth_seen_from_Apollo_17.jpg"
-                        var url = "https://api.thevirustracker.com/free-api?global=stats";
-
-                        request(url, function(err, response, body) {
-                            if (err) {
-                                console.log('error:', err);
-                            } else {
-                                console.log('body:', body);
-                            }
-                            let parsedData = JSON.parse(body)
-
-                            covidmessage.channel.send({
-                                embed: new Discord.MessageEmbed()
-                                    .setTitle("Covid-19 Global Cases!")
-                                    .setThumbnail('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/SARS-CoV-2_without_background.png/440px-SARS-CoV-2_without_background.png')
-                                    .setColor("0x999999")
-                                    .setDescription(
-                                        `**Total Cases:** ${parsedData['results'][0]["total_cases"]}
-**Total Recovered:** ${parsedData['results'][0]["total_recovered"]}
-**Total Unresolved:** ${parsedData['results'][0]["total_unresolved"]}
-**Total Deaths:** ${parsedData['results'][0]["total_deaths"]}
-**New Cases Today:** ${parsedData['results'][0]["total_new_cases_today"]}
-**New Deaths Today:** ${parsedData['results'][0]["total_new_deaths_today"]}
-**Active Cases** ${parsedData['results'][0]["total_active_cases"]}
-**Serious Cases:** ${parsedData['results'][0]["total_serious_cases"]}
-**Total Affected Countries:** ${parsedData['results'][0]["total_affected_countries"]}
-`)
-                                    .setImage(flag)
-                                    .setTimestamp()
-                                    .setFooter('By https://covidtracking.com/api')
-
-                            });
-                        });
-                        return;
-
 
                     case 'california':
                     case 'ca':
@@ -465,6 +438,18 @@ bot.on('message', covidmessage => {
                     console.log('error:', err);
                 } else {
                     console.log('body:', body);
+                }
+                if (response.statusCode >= 400) {
+                    console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
+                    if (helper.helperVals.sendMessageToCreator == false) {
+                        bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                            "It is imperative that this situation gets resolved");
+                        helper.sendMessageAboutAPI(chucknorrismessage);
+                        helper.helperVals.sendMessageToCreator = true;
+                    }
+                    return;
+                } else {
+                    //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
                 }
                 let parsedData = JSON.parse(body)
 

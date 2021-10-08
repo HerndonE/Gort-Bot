@@ -54,7 +54,8 @@ openbrewerydb.com
 ```    
 ## APIs Retired
 ```
-taco-randomizer    
+taco-randomizer  
+api.thevirustracker.com      
 ```   
 
 ----
