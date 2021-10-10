@@ -29,23 +29,23 @@ bot.on('message', covidmessage => {
                 text = input.replace("covid ", "");
                 if (text.includes('country')) {
                     text = text.replace("country ", "").toLocaleLowerCase();
-                    //if (isocountries.hasOwnProperty(text)) {
-                    //text = isocountries[text];//isocountries[text.toLocaleLowerCase()];
-                    if (isocountries.hasOwnProperty(text)) {
+                    if (helper.isocountries.hasOwnProperty(text)) {
 
-                        text = isocountries[text];
+                        text = helper.isocountries[text];
                     }
-   
+
                     console.log("1:" + text);
-                    /* Old API
-                    var url = "https://api.thevirustracker.com/free-api?countryTotal="+ text;
-                    */
                     var url = "https://corona-api.com/countries/" + text; //New API
                     request(url, function(err, response, body) {
                         if (err) {
                             console.log('error:', err);
                         } else {
                             //console.log('body:', body);
+                            let parsedData = JSON.parse(body)
+                            if (parsedData["message"]) {
+                                covidmessage.channel.send("You may have mistyped something.")
+                                return;
+                            }
                         }
                         if (response.statusCode >= 400) {
                             console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
@@ -61,33 +61,16 @@ bot.on('message', covidmessage => {
                         }
                         let parsedData = JSON.parse(body)
 
-                        /* Old API Case
-                        parsedData["results"]
-                        */
                         if (parsedData["message"]) {
                             covidmessage.channel.send(parsedData["message"])
                             return;
                         }
-                        
+
                         covidmessage.channel.send({
                             embed: new Discord.MessageEmbed()
                                 .setTitle("Covid-19 Country Search!")
-                                .setThumbnail('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/SARS-CoV-2_without_background.png/440px-SARS-CoV-2_without_background.png')
+                                .setThumbnail(helper.helperVals.coronaImage)
                                 .setColor("0x999999")
-                                /* Old API
-                          .setDescription(
-`**Country:** ${parsedData["countrydata"][0]["info"].title}
-**Total Cases:** ${parsedData["countrydata"][0]["total_cases"]}
-**Total Recovered:** ${parsedData["countrydata"][0]["total_recovered"]}
-**Total Unresolved:** ${parsedData["countrydata"][0]["total_unresolved"]}
-**Total Deaths:** ${parsedData["countrydata"][0]["total_deaths"]}
-**Total New Cases Today:** ${parsedData["countrydata"][0]["total_new_cases_today"]}
-**Total New Deaths Today:** ${parsedData["countrydata"][0]["total_new_deaths_today"]}
-**Total Active Cases:** ${parsedData["countrydata"][0]["total_active_cases"]}
-**Total Serious Cases:** ${parsedData["countrydata"][0]["total_serious_cases"]}
-**Total Danger Rank:** ${parsedData["countrydata"][0]["total_danger_rank"]}
-`)
-                        */
                                 .setDescription(
                                     `
 **Country:** ${parsedData["data"]["name"]}
@@ -112,7 +95,7 @@ bot.on('message', covidmessage => {
                     case 'about':
                         covidmessage.channel.send({
                             embed: new Discord.MessageEmbed()
-                                .setTitle("Covid-19 Tracker Information" + "\n" + "~ Gort Bot")
+                                .setTitle("Covid-19 Tracker Information" + "\n")
                                 .setThumbnail('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/SARS-CoV-2_without_background.png/440px-SARS-CoV-2_without_background.png')
                                 .setColor("0x999999")
                                 .setDescription("To learn about current Covid-19 cases " +
@@ -120,14 +103,13 @@ bot.on('message', covidmessage => {
                                     "**USA State Search:**" + '\n' +
                                     "EX: .covid _insert state name/abbrv here_" + '\n' +
                                     "**Country Search:**" + '\n' +
-                                    "EX: .covid country _insert country name/abbrv here_" + '\n'
+                                    "EX: .covid country _insert country name/country code here_" + '\n'
                                 )
                                 .setTimestamp()
                                 .setFooter('By Gort Bot')
 
                         });
                         return;
-
                     case 'california':
                     case 'ca':
                         text = 'ca';
@@ -427,6 +409,7 @@ bot.on('message', covidmessage => {
                         text = 'wy';
                         flag = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/286px-Flag_of_Wyoming.svg.png"
                         break;
+
                 }
 
             }
@@ -436,15 +419,21 @@ bot.on('message', covidmessage => {
             request(url, function(err, response, body) {
                 if (err) {
                     console.log('error:', err);
+                    return;
                 } else {
-                    console.log('body:', body);
+                    //console.log('body:', body);
+                    let parsedData = JSON.parse(body)
+                    if (parsedData["error"]) {
+                        covidmessage.channel.send("You may have mistyped something.")
+                        return
+                    }
                 }
                 if (response.statusCode >= 400) {
                     console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
                     if (helper.helperVals.sendMessageToCreator == false) {
                         bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
                             "It is imperative that this situation gets resolved");
-                        helper.sendMessageAboutAPI(chucknorrismessage);
+                        helper.sendMessageAboutAPI(covidmessage);
                         helper.helperVals.sendMessageToCreator = true;
                     }
                     return;
@@ -453,15 +442,10 @@ bot.on('message', covidmessage => {
                 }
                 let parsedData = JSON.parse(body)
 
-                if (parsedData["error"]) {
-                    covidmessage.channel.send("You may have mistyped something.")
-                    return;
-                }
-
                 covidmessage.channel.send({
                     embed: new Discord.MessageEmbed()
                         .setTitle("Covid-19 State Search!")
-                        .setThumbnail('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/SARS-CoV-2_without_background.png/440px-SARS-CoV-2_without_background.png')
+                        .setThumbnail(helper.helperVals.coronaImage)
                         .setColor("0x999999")
                         .setDescription(
                             `**State:** ${parsedData['state']}
@@ -488,257 +472,6 @@ bot.on('message', covidmessage => {
 
 
 })
-
-
-var isocountries = {
-
-    "afghanistan": "af",
-    "aland islands": "ax",
-    "albania": "al",
-    "algeria": "dz",
-    "american samoa": "as",
-    "andorra": "ad",
-    "angola": "ao",
-    "anguilla": "ai",
-    "antarctica": "aq",
-    "antigua and barbuda": "ag",
-    "argentina": "ar",
-    "armenia": "am",
-    "aruba": "aw",
-    "australia": "au",
-    "austria": "at",
-    "azerbaijan": "az",
-    "bahamas": "bs",
-    "bahrain": "bh",
-    "bangladesh": "bd",
-    "barbados": "bb",
-    "belarus": "by",
-    "belgium": "be",
-    "belize": "bz",
-    "benin": "bj",
-    "bermuda": "bm",
-    "bhutan": "bt",
-    "bolivia": "bo",
-    "bosnia and herzegovina": "ba",
-    "botswana": "bw",
-    "bouvet island": "bv",
-    "brazil": "br",
-    "british indian ocean territory": "io",
-    "brunei darussalam": "bn",
-    "bulgaria": "bg",
-    "burkina faso": "bf",
-    "burundi": "bi",
-    "cambodia": "kh",
-    "cameroon": "cm",
-    "canada": "ca",
-    "cape verde": "cv",
-    "cayman islands": "ky",
-    "central african republic": "cf",
-    "chad": "td",
-    "chile": "cl",
-    "china": "cn",
-    "christmas island": "cx",
-    "cocos (keeling) islands": "cc",
-    "colombia": "co",
-    "comoros": "km",
-    "congo": "cg",
-    "congo, democratic republic": "cd",
-    "cook islands": "ck",
-    "costa rica": "cr",
-    "cote d'ivoire": "ci",
-    "croatia": "hr",
-    "cuba": "cu",
-    "cyprus": "cy",
-    "czech republic": "cz",
-    "denmark": "dk",
-    "djibouti": "dj",
-    "dominica": "dm",
-    "dominican republic": "do",
-    "ecuador": "ec",
-    "egypt": "eg",
-    "el salvador": "sv",
-    "equatorial guinea": "gq",
-    "eritrea": "er",
-    "estonia": "ee",
-    "ethiopia": "et",
-    "falkland islands (malvinas)": "fk",
-    "faroe islands": "fo",
-    "fiji": "fj",
-    "finland": "fi",
-    "france": "fr",
-    "french guiana": "gf",
-    "french polynesia": "pf",
-    "french southern territories": "tf",
-    "gabon": "ga",
-    "gambia": "gm",
-    "georgia": "ge",
-    "germany": "de",
-    "ghana": "gh",
-    "gibraltar": "gi",
-    "greece": "gr",
-    "greenland": "gl",
-    "grenada": "gd",
-    "guadeloupe": "gp",
-    "guam": "gu",
-    "guatemala": "gt",
-    "guernsey": "gg",
-    "guinea": "gn",
-    "guinea-bissau": "gw",
-    "guyana": "gy",
-    "haiti": "ht",
-    "heard island & mcdonald islands": "hm",
-    "holy see (vatican city state)": "va",
-    "honduras": "hn",
-    "hong kong": "hk",
-    "hungary": "hu",
-    "iceland": "is",
-    "india": "in",
-    "indonesia": "id",
-    "iran, islamic republic of": "ir",
-    "iraq": "iq",
-    "ireland": "ie",
-    "isle of man": "im",
-    "israel": "il",
-    "italy": "it",
-    "jamaica": "jm",
-    "japan": "jp",
-    "jersey": "je",
-    "jordan": "jo",
-    "kazakhstan": "kz",
-    "kenya": "ke",
-    "kiribati": "ki",
-    "korea": "kr",
-    "kuwait": "kw",
-    "kyrgyzstan": "kg",
-    "lao people's democratic republic": "la",
-    "latvia": "lv",
-    "lebanon": "lb",
-    "lesotho": "ls",
-    "liberia": "lr",
-    "libyan arab jamahiriya": "ly",
-    "liechtenstein": "li",
-    "lithuania": "lt",
-    "luxembourg": "lu",
-    "macao": "mo",
-    "macedonia": "mk",
-    "madagascar": "mg",
-    "malawi": "mw",
-    "malaysia": "my",
-    "maldives": "mv",
-    "mali": "ml",
-    "malta": "mt",
-    "marshall islands": "mh",
-    "martinique": "mq",
-    "mauritania": "mr",
-    "mauritius": "mu",
-    "mayotte": "yt",
-    "mexico": "mx",
-    "micronesia, federated states of": "fm",
-    "moldova": "md",
-    "monaco": "mc",
-    "mongolia": "mn",
-    "montenegro": "me",
-    "montserrat": "ms",
-    "morocco": "ma",
-    "mozambique": "mz",
-    "myanmar": "mm",
-    "namibia": "na",
-    "nauru": "nr",
-    "nepal": "np",
-    "netherlands": "nl",
-    "netherlands antilles": "an",
-    "new caledonia": "nc",
-    "new zealand": "nz",
-    "nicaragua": "ni",
-    "niger": "ne",
-    "nigeria": "ng",
-    "niue": "nu",
-    "norfolk island": "nf",
-    "northern mariana islands": "mp",
-    "norway": "no",
-    "oman": "om",
-    "pakistan": "pk",
-    "palau": "pw",
-    "palestinian territory, occupied": "ps",
-    "panama": "pa",
-    "papua new guinea": "pg",
-    "paraguay": "py",
-    "peru": "pe",
-    "philippines": "ph",
-    "pitcairn": "pn",
-    "poland": "pl",
-    "portugal": "pt",
-    "puerto rico": "pr",
-    "qatar": "qa",
-    "reunion": "re",
-    "romania": "ro",
-    "russian federation": "ru",
-    "rwanda": "rw",
-    "saint barthelemy": "bl",
-    "saint helena": "sh",
-    "saint kitts and nevis": "kn",
-    "saint lucia": "lc",
-    "saint martin": "mf",
-    "saint pierre and miquelon": "pm",
-    "saint vincent and grenadines": "vc",
-    "samoa": "ws",
-    "san marino": "sm",
-    "sao tome and principe": "st",
-    "saudi arabia": "sa",
-    "senegal": "sn",
-    "serbia": "rs",
-    "seychelles": "sc",
-    "sierra leone": "sl",
-    "singapore": "sg",
-    "slovakia": "sk",
-    "slovenia": "si",
-    "solomon islands": "sb",
-    "somalia": "so",
-    "south africa": "za",
-    "south georgia and sandwich isl.": "gs",
-    "spain": "es",
-    "sri lanka": "lk",
-    "sudan": "sd",
-    "suriname": "sr",
-    "svalbard and jan mayen": "sj",
-    "swaziland": "sz",
-    "sweden": "se",
-    "switzerland": "ch",
-    "syrian arab republic": "sy",
-    "taiwan": "tw",
-    "tajikistan": "tj",
-    "tanzania": "tz",
-    "thailand": "th",
-    "timor-leste": "tl",
-    "togo": "tg",
-    "tokelau": "tk",
-    "tonga": "to",
-    "trinidad and tobago": "tt",
-    "tunisia": "tn",
-    "turkey": "tr",
-    "turkmenistan": "tm",
-    "turks and caicos islands": "tc",
-    "tuvalu": "tv",
-    "uganda": "ug",
-    "ukraine": "ua",
-    "united arab emirates": "ae",
-    "united kingdom": "gb",
-    "united states": "us",
-    "united states outlying islands": "um",
-    "uruguay": "uy",
-    "uzbekistan": "uz",
-    "vanuatu": "vu",
-    "venezuela": "ve",
-    "viet nam": "vn",
-    "virgin islands, british": "vg",
-    "virgin islands, u.s.": "vi",
-    "wallis and futuna": "wf",
-    "western sahara": "eh",
-    "yemen": "ye",
-    "zambia": "zm",
-    "zimbabwe": "zw"
-};
-
 
 bot.on('ready', () => {
     console.log('Covid Tracker is Ready Commander');
