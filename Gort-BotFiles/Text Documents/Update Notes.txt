@@ -187,3 +187,8 @@ Update 20:
 10.9.2021
 Update 21:
     Updated covid.js input and moved iso countries to helper.js
+
+/*********************/
+10.10.2021
+Update 22:
+    Removed gort thumbnail from weather.

@@ -99,9 +99,6 @@ bot.on('message', weathermessage => {
                                   
                                 color: 0x999999,
 	                            title: 'Current Weather Report \n ~ Gort Bot',
-	                            thumbnail: {
-		                        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_k76-s3pPH7ORxG6lI4c6c0fVskmLICRX0zNLJ4Ouns_eEeJnlc88I4Aok2BXJM-x_nVZaedZ&usqp=CAc',
-	                            },
                                 description: message,
                                 image: {
                                     url: weatherIcon
