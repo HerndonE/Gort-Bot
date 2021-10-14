@@ -109,7 +109,7 @@ bot.on('message', foodmessage => {
                     if (response.statusCode >= 400) {
                         console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
                         if (helper.helperVals.sendMessageToCreator == false) {
-                            bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                            bot.users.cache.get(`${helper.helperVals.USERID}`).send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
                                 "It is imperative that this situation gets resolved");
                             helper.sendMessageAboutAPI(foodmessage);
                             helper.helperVals.sendMessageToCreator = true;
@@ -189,7 +189,7 @@ function randoTaco(foodmessage) {
         if (response.statusCode >= 400) {
             console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
             if (helper.helperVals.sendMessageToCreator == false) {
-                bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                bot.users.cache.get(`${helper.helperVals.USERID}`).send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
                     "It is imperative that this situation gets resolved");
                 helper.sendMessageAboutAPI(foodmessage);
                 helper.helperVals.sendMessageToCreator = true;
@@ -267,7 +267,7 @@ function breweriesCity(foodmessage) {
         if (response.statusCode >= 400) {
             console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
             if (helper.helperVals.sendMessageToCreator == false) {
-                bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                bot.users.cache.get(`${helper.helperVals.USERID}`).send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
                     "It is imperative that this situation gets resolved");
                 helper.sendMessageAboutAPI(foodmessage);
                 helper.helperVals.sendMessageToCreator = true;
@@ -394,7 +394,7 @@ function breweriesName(foodmessage) {
         if (response.statusCode >= 400) {
             console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
             if (helper.helperVals.sendMessageToCreator == false) {
-                bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                bot.users.cache.get(`${helper.helperVals.USERID}`).send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
                     "It is imperative that this situation gets resolved");
                 helper.sendMessageAboutAPI(foodmessage);
                 helper.helperVals.sendMessageToCreator = true;
@@ -521,7 +521,7 @@ function breweriesState(foodmessage) {
         if (response.statusCode >= 400) {
             console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
             if (helper.helperVals.sendMessageToCreator == false) {
-                bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                bot.users.cache.get(`${helper.helperVals.USERID}`).send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
                     "It is imperative that this situation gets resolved");
                 helper.sendMessageAboutAPI(foodmessage);
                 helper.helperVals.sendMessageToCreator = true;
@@ -649,7 +649,7 @@ function breweriesZip(foodmessage) {
         if (response.statusCode >= 400) {
             console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
             if (helper.helperVals.sendMessageToCreator == false) {
-                bot.users.cache.get("YOURIDHERE").send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
+                bot.users.cache.get(`${helper.helperVals.USERID}`).send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
                     "It is imperative that this situation gets resolved");
                 helper.sendMessageAboutAPI(foodmessage);
                 helper.helperVals.sendMessageToCreator = true;

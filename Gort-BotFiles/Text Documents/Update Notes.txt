@@ -192,3 +192,8 @@ Update 21:
 10.10.2021
 Update 22:
     Removed gort thumbnail from weather.
+
+/*********************/
+10.13.2021
+Update 23:
+    Created and implemented an .env variable for user id to all services and advice. 
