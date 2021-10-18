@@ -197,3 +197,8 @@ Update 22:
 10.13.2021
 Update 23:
     Created and implemented an .env variable for user id to all services and advice. 
+
+/*********************/
+10.18.2021
+Update 24:
+    Added button pagination instead of emojies to movie.js. 

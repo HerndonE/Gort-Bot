@@ -1,17 +1,23 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client();
-const request = require('request');
-const filestream = require('fs');
-// used for stripping bad text out of user input
+const Discord = require('discord.js'); 
+const bot = new Discord.Client(); 
+bot.interaction = {}; 
+const DiscordButtons = require('discord-buttons'); 
+const ButtonPages = require('discord-button-pages'); 
 const Sanitize = require("../sanitize");
 require('dotenv').config();
 var token = process.env.TOKEN;
-var moviemessage;
-const moviePREFIX = '.';
+const request = require('request');
+DiscordButtons(bot);
 const helper = require("../helpers/helper.js");
-const paginate = require('discord.js-pagination');
+const moviePREFIX = '.';
 
-bot.on('message', moviemessage => {
+/*
+References
+1. https://www.youtube.com/watch?v=EZr4VgSudGQ&ab_channel=FusionTerror
+2. https://www.npmjs.com/package/discord-button-pages
+*/
+
+  bot.on('message', moviemessage => {
     let raw_userinput = moviemessage.content.substring(moviePREFIX.length)
     let safe_userinput = Sanitize.text(raw_userinput)
     let args = safe_userinput.split(" ");
@@ -279,8 +285,8 @@ bot.on('message', moviemessage => {
                         ]
 
                        
-
-                        paginate(moviemessage, pages, emojis, 120000)
+                        ButtonPages.createPages(bot.interaction, moviemessage, pages, 120000, "green", "➡️", "⬅️", "❌");
+                        //paginate(moviemessage, pages, emojis, 120000)
                         return;
 
                     })
@@ -294,14 +300,18 @@ bot.on('message', moviemessage => {
 
             break;
     }
-})
+                       
+});
 
-bot.on('ready', () => {
+bot.on('clickButton', (button) => {
+    ButtonPages.buttonInteractions(button, bot.interaction);
+  });
+  
+  bot.login(token);//For Local Testing
+
+  bot.on('ready', () => {
     console.log('Movie Function is Ready Commander');
-})
-
-bot.login(token); //For Local Testing
-//bot.login(process.env.token); //For Online Deploy
+  });
 
 function length(obj) {
     if (obj === undefined) {
