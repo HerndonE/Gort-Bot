@@ -4,11 +4,11 @@ require('dotenv').config();
 var token = process.env.TOKEN;
 const Sanitize = require("../sanitize");
 const request = require('request');
-const imagePREFIX = '.';
 var imagemessage;
+const helper = require("../helpers/helper.js");
 bot.on('message', imagemessage => {
 
-    let raw_userinput = imagemessage.content.substring(imagePREFIX.length)
+    let raw_userinput = imagemessage.content.substring(helper.helperVals.botPrefix.length)
     let safe_userinput = Sanitize.text(raw_userinput)
     let args = safe_userinput.split(" ");
     var newText;

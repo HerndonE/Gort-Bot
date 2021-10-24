@@ -6,13 +6,12 @@ const filestream = require('fs');
 const Sanitize = require("../sanitize");
 require('dotenv').config();
 var token = process.env.TOKEN;
-const covidPrefix = '.';
 var covidmessage;
 const helper = require("../helpers/helper.js");
 
 bot.on('message', covidmessage => {
 
-    let raw_userinput = covidmessage.content.substring(covidPrefix.length)
+    let raw_userinput = covidmessage.content.substring(helper.helperVals.botPrefix.length)
     let safe_userinput = Sanitize.text(raw_userinput)
     let args = safe_userinput.split(" ");
     var flag, text;

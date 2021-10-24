@@ -6,13 +6,12 @@ const filestream = require('fs');
 const Sanitize = require("../sanitize");
 require('dotenv').config();
 var token = process.env.TOKEN;
-const planetside2PREFIX = '.';
 var planetside2message;
 const helper = require("../helpers/helper.js");
 
 bot.on('message', planetside2message => {
    
-    let raw_userinput = planetside2message.content.substring(planetside2PREFIX.length)
+    let raw_userinput = planetside2message.content.substring(helper.helperVals.botPrefix.length)
     let safe_userinput = Sanitize.text(raw_userinput)
     let args = safe_userinput.split(" ");
     var text;

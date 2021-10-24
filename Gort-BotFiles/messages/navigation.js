@@ -17,11 +17,11 @@ var token = process.env.TOKEN;
 const filestream = require('fs');
 // used for stripping bad text out of user input
 const Sanitize = require("../sanitize");
-const PREFIX = '.';
-var version = '1.0.12'
+var version = '1.1.0'
 const paginate = require('discord.js-pagination');
 var data = require('./database');
 const { navDisbut } = require('../index');
+const helper = require("../helpers/helper.js");
 
 
 /*
@@ -226,7 +226,7 @@ function bz2Dump(name) {
 bot.on('message', async msg => {
     // let args = msg.content.substring(PREFIX.length).split(" ");
 
-    let raw_userinput = msg.content.substring(PREFIX.length)
+    let raw_userinput = msg.content.substring(helper.helperVals.botPrefix.length)
     let safe_userinput = Sanitize.text(raw_userinput)
     let args = safe_userinput.split(" ");
 

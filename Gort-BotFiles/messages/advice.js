@@ -10,13 +10,12 @@ require('dotenv').config();
 var token = process.env.TOKEN;
 const Sanitize = require("../sanitize");
 const request = require('request');
-const advicePREFIX = '.';
 var advicemessage;
 const helper = require("../helpers/helper.js");
 
 bot.on('message', advicemessage => {
 
-    let raw_userinput = advicemessage.content.substring(advicePREFIX.length)
+    let raw_userinput = advicemessage.content.substring(helper.helperVals.botPrefix.length)
     let safe_userinput = Sanitize.text(raw_userinput)
     let args = safe_userinput.split(" ");
     switch (args[0]) {

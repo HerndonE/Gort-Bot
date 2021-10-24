@@ -8,6 +8,7 @@ function sendMessageAboutAPI(message){
 
 var helperVals ={
   sendMessageToCreator : false,
+  botPrefix : '.',
   coronaImage : 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/SARS-CoV-2_without_background.png/440px-SARS-CoV-2_without_background.png',
   USERID : process.env.MYUSERID, 
   message 

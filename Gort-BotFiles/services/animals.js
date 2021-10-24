@@ -4,12 +4,11 @@ require('dotenv').config();
 var token = process.env.TOKEN;
 const Sanitize = require("../sanitize");
 const request = require('request');
-const animalPREFIX = '.';
 var animalmessage;
 const helper = require("../helpers/helper.js");
 bot.on('message', animalmessage => {
 
-    let raw_userinput = animalmessage.content.substring(animalPREFIX.length)
+    let raw_userinput = animalmessage.content.substring(helper.helperVals.botPrefix.length)
     let safe_userinput = Sanitize.text(raw_userinput)
     let args = safe_userinput.split(" ");
     switch (args[0]) {

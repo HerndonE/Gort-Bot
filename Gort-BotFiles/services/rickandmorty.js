@@ -6,13 +6,12 @@ const filestream = require('fs');
 const Sanitize = require("../sanitize");
 require('dotenv').config();
 var token = process.env.TOKEN;
-const rnmPrefix = '.';
 var rickandmortymessage;
 const helper = require("../helpers/helper.js");
 
 bot.on('message', rickandmortymessage => {
 
-    let raw_userinput = rickandmortymessage.content.substring(rnmPrefix.length)
+    let raw_userinput = rickandmortymessage.content.substring(helper.helperVals.botPrefix.length)
     let safe_userinput = Sanitize.text(raw_userinput)
     let args = safe_userinput.split(" ");
     var charText;

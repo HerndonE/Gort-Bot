@@ -7,7 +7,6 @@ const Sanitize = require("../sanitize");
 require('dotenv').config();
 var token = process.env.TOKEN;
 var foodmessage;
-const foodPREFIX = '.';
 const paginate = require('discord.js-pagination');
 const helper = require("../helpers/helper.js");
 
@@ -30,13 +29,6 @@ const cmdFood = {
             value: '_.food_',
             inline: true,
         },
-        /* API no longer working, keeping this for documentation
-        { 
-            name: '**2. Taco Recipes**',
-            value: '_.taco_',
-            inline: true,
-        },
-        */
         {
             name: '**2. Find Breweries**',
             value: '_.breweries about_',
@@ -83,7 +75,7 @@ const cmdBreweries = {
 var brewText;
 
 bot.on('message', foodmessage => {
-    let raw_userinput = foodmessage.content.substring(foodPREFIX.length)
+    let raw_userinput = foodmessage.content.substring(helper.helperVals.botPrefix.length)
     let safe_userinput = Sanitize.text(raw_userinput)
     let args = safe_userinput.split(" ");
 
@@ -173,87 +165,6 @@ bot.on('message', foodmessage => {
 
 })
 
-/* API no longer working, keeping this for documentation
-function randoTaco(foodmessage) {
-    var baseLayer;
-    var condiment;
-    var shellRecipe;
-    var url = 'http://taco-randomizer.herokuapp.com/random/?full-taco=true'; //Taco API
-    request(url, function(err, response, body) {
-        if (err) {
-            console.log('error:', err);
-        } else {
-            //console.log('body:', body);
-        }
-
-        if (response.statusCode >= 400) {
-            console.log('API: ' + url + ' has a status code of ' + response.statusCode + " Status:❌");
-            if (helper.helperVals.sendMessageToCreator == false) {
-                bot.users.cache.get(`${helper.helperVals.USERID}`).send("Hello Commander, intelligence reports reveal that " + 'API: ' + url + ' has a status code of ' + response.statusCode + " .Status:❌" + '\n' +
-                    "It is imperative that this situation gets resolved");
-                helper.sendMessageAboutAPI(foodmessage);
-                helper.helperVals.sendMessageToCreator = true;
-            }
-            return;
-        } else {
-            //console.log('API: ' + url + ' has a status code of ' + response.statusCode +" .Status:✔️");
-        }
-
-        let parsedData = JSON.parse(body)
-
-        baseLayer = parsedData["base_layer"]["recipe"];
-        condiment = "Sorry there is no condiment for this Taco";
-        if (parsedData["condiment"]) { // - OC
-            if (parsedData["condiment"]["recipe"]) {
-                condiment = parsedData["condiment"]["recipe"];
-            }
-        }
-
-        //check if they are more than 2000 words. Otherwise it is ok for now
-
-        shellRecipe = "Sorry there is no shell recipe for this Taco";
-        if (parsedData["shell"]) {
-            if (parsedData["shell"]["recipe"]) {
-                shellRecipe = parsedData["shell"]["recipe"];
-            }
-        }
-
-
-        const p1 = new Discord.MessageEmbed()
-            .setColor("0x999999")
-            .setTitle(parsedData["slug"])
-            .setDescription(parsedData["recipe"])
-
-        const p2 = new Discord.MessageEmbed()
-            .setColor("0x999999")
-            .setTitle("Base Layer")
-            .setDescription(baseLayer)
-
-        const p3 = new Discord.MessageEmbed()
-            .setColor("0x999999")
-            .setTitle("Condiment Recipe")
-            .setDescription(condiment)
-
-        const p4 = new Discord.MessageEmbed()
-            .setColor("0x999999")
-            .setTitle("Shell Recipe")
-            .setDescription(shellRecipe)
-
-        let pages = [
-            p1, p2, p3, p4
-        ]
-
-        let emojis = [
-            "⬅️",
-            "➡️",
-        ]
-
-        paginate(foodmessage, pages, emojis, 180000)
-
-    });
-    return;
-}
-*/
 function breweriesCity(foodmessage) {
     var cityText = brewText.replace("breweries city ", "");
     console.log(cityText);

@@ -6,14 +6,13 @@ const filestream = require('fs');
 const Sanitize = require("../sanitize");
 require('dotenv').config();
 var token = process.env.TOKEN;
-const weatherPREFIX = '.';
 var weathermessage;
 var openweathermapMessage = "Brought to you by openweathermap.org";
 const helper = require("../helpers/helper.js");
 
 bot.on('message', weathermessage => {
    
-    let raw_userinput = weathermessage.content.substring(weatherPREFIX.length)
+    let raw_userinput = weathermessage.content.substring(helper.helperVals.botPrefix.length)
     let safe_userinput = Sanitize.text(raw_userinput)
     let args = safe_userinput.split(" ");
     
