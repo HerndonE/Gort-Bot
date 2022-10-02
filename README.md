@@ -9,6 +9,12 @@
 
 ![](https://img.shields.io/github/forks/HerndonE/Gort-Bot?style=social) ![](https://img.shields.io/github/stars/HerndonE/Gort-Bot?style=social) ![](https://img.shields.io/github/watchers/HerndonE/Gort-Bot?style=social)
 
+# 🚨 Warning! 🚨
+Heroku has decided to remove it's free tier subscription at the end of November 28, 2022.
+How does this affect you? If you house my "Gort" discord bot (thank you very much!), and it is hosted under Heroku's free tier service. Gort bot will remain on Heroku until the service it up while in the meantime, other hosting services are being researched into. Thank you very much for taking the time into reading this message and let me know if you have any questions, comments, or concerns.
+
+### Reference: [Removal of Heroku Free Product Plans FAQ](https://help.heroku.com/RSBRUH58/removal-of-heroku-free-product-plans-faq)
+
 ----
 ## What is Gort Bot?
 Gort Bot is a multi-purpose discord bot focusing on enhancing the discord expierence. You will find a bug-free and easy-to-use experience.     
